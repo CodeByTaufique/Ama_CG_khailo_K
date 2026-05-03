@@ -72,7 +72,7 @@ This project is a showcase of **Pure Vanilla Development**. No external framewor
 
 1. **Clone the Repo:**
    ```bash
-   git clone [https://github.com/TauFique/WhoStoleMyCGPA.git](https://github.com/TauFique/WhoStoleMyCGPA.git)
+   git clone [https://github.com/TauFique/WhoStoleMyCGPA.git](https://github.com/CodeByTauFique/WhoStoleMyCGPA.git)
    ```
 2. **Open the Game:**
    Simply open `game.html` in any web browser. No installation or local server required!
