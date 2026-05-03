@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>আমার CG খাইলো কে? 💀 | Who Stole My CGPA?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+:root{
+  --p:#6d28d9;--pl:#a78bfa;--cy:#06b6d4;--pk:#ec4899;
+  --gr:#10b981;--ye:#f59e0b;--re:#ef4444;--bl:#3b82f6;
+  --or:#f97316;
+  /* Warm neutral palette - not too dark, not too bright */
+  --bg:#0f0f17;--bg2:#141420;--bg3:#191928;--card:#1c1c2e;
+  --bd:#2a2a45;--tx:#e2e2f0;--mu:#6b6b8a;--mu2:#4a4a65;
+  --surface:#222236;
+}
+html,body{width:100%;min-height:100%;background:var(--bg);overflow-x:hidden;}
+#G{background:var(--bg);font-family:'Hind Siliguri',system-ui,sans-serif;color:var(--tx);
+   width:100%;max-width:430px;margin:0 auto;min-height:100dvh;overflow:hidden;position:relative;}
+.scr{display:none;flex-direction:column;align-items:center;min-height:100dvh;}
+.scr.on{display:flex;}
+
+/* ═══════════════════════════════
+   KEYFRAMES
+═══════════════════════════════ */
+@keyframes popIn{0%{opacity:0;transform:scale(0.4) rotate(-8deg)}70%{transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glitch{0%,88%,100%{transform:none;filter:none}89%{transform:translateX(-3px);filter:hue-rotate(90deg)}91%{transform:translateX(3px);filter:hue-rotate(270deg)}93%{transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes heartbeat{0%,100%{transform:scale(1)}14%{transform:scale(1.2)}28%{transform:scale(1)}42%{transform:scale(1.1)}}
+@keyframes flicker{0%,96%,100%{opacity:1}97%{opacity:0.5}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes scared{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(0.9) rotate(-5deg)}}
+@keyframes dmgPop{0%{opacity:1;transform:translateY(0) scale(1)}60%{opacity:1;transform:translateY(-30px) scale(1.3)}100%{opacity:0;transform:translateY(-55px) scale(0.9)}}
+@keyframes screenShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+@keyframes arcReveal{from{transform:scale(0.7) translateY(30px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+@keyframes overlayFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes statWarn{0%,100%{opacity:1}50%{opacity:0.25}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 8px rgba(109,40,217,0.4)}50%{box-shadow:0 0 20px rgba(109,40,217,0.7)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes nameGlow{0%,100%{text-shadow:0 0 10px rgba(167,139,250,0.5)}50%{text-shadow:0 0 20px rgba(167,139,250,0.9),0 0 40px rgba(167,139,250,0.3)}}
+
+/* ═══════════════════════════════
+   TITLE SCREEN
+═══════════════════════════════ */
+#scr-title{background:var(--bg);padding:0 0 24px;}
+
+.t-stage{width:100%;height:280px;position:relative;overflow:hidden;flex-shrink:0;
+  background:linear-gradient(180deg,#0a0a14 0%,#11111f 60%,#16162a 100%);}
+.t-stage::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(109,40,217,0.15) 0%,transparent 70%);
+  pointer-events:none;}
+.t-floor{position:absolute;bottom:0;left:0;right:0;height:44px;
+  background:linear-gradient(180deg,#16162a,#0f0f1e);
+  border-top:2px solid rgba(109,40,217,0.3);}
+.t-floor-line{position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(109,40,217,0.6),rgba(6,182,212,0.6),transparent);}
+
+.t-char{position:absolute;bottom:44px;display:flex;flex-direction:column;align-items:center;}
+
+/* TITLE TEXT ON STAGE */
+.stage-title-wrap{position:absolute;bottom:56px;left:50%;transform:translateX(-50%);
+  text-align:center;white-space:nowrap;z-index:5;}
+.stage-title-main{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:3px;
+  line-height:1.05;animation:glitch 4s infinite;display:block;}
+.stage-title-sub-sm{font-size:10px;color:var(--mu);letter-spacing:3px;text-transform:uppercase;
+  display:block;margin-top:3px;}
+
+/* Stars */
+#t-stars{position:absolute;inset:0;pointer-events:none;}
+.star{position:absolute;background:#fff;border-radius:50%;animation:flicker 3s infinite;}
+
+.t-logo{text-align:center;padding:0 16px;margin-top:12px;}
+.t-logo-main{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:3px;color:var(--mu);
+  text-transform:uppercase;}
+.t-by{font-size:9px;color:var(--mu2);margin-top:3px;letter-spacing:1px;}
+
+.t-features{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:0 14px;margin:10px 0;}
+.t-feat{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 6px;text-align:center;
+  transition:border-color 0.2s;}
+.t-feat:hover{border-color:rgba(109,40,217,0.4);}
+.t-feat-ic{font-size:20px;display:block;margin-bottom:4px;}
+.t-feat-tx{font-size:8.5px;color:var(--mu);line-height:1.3;}
+
+.t-info{margin:0 14px 10px;background:linear-gradient(135deg,rgba(109,40,217,0.08),rgba(6,182,212,0.05));
+  border:1px dashed rgba(109,40,217,0.3);border-radius:12px;padding:11px;text-align:center;}
+.t-info-tx{font-size:10px;color:var(--mu);line-height:1.65;}
+.t-info-tx b{color:var(--pl);}
+
+/* Name input */
+.t-name-wrap{padding:0 14px;margin-bottom:12px;}
+.t-name-label{font-size:9px;color:var(--mu);text-transform:uppercase;letter-spacing:1.5px;
+  margin-bottom:5px;text-align:center;font-family:'Space Mono',monospace;}
+.t-name-input{width:100%;padding:14px 16px;background:var(--card);border:1.5px solid var(--bd);
+  border-radius:12px;color:var(--tx);font-size:15px;font-family:'Hind Siliguri',sans-serif;
+  font-weight:700;text-align:center;outline:none;transition:border-color 0.2s,box-shadow 0.2s;}
+.t-name-input:focus{border-color:var(--p);box-shadow:0 0 0 3px rgba(109,40,217,0.12);}
+.t-name-input::placeholder{color:var(--mu2);}
+
+.t-play{display:block;width:calc(100% - 28px);margin:0 14px;padding:16px;
+  background:linear-gradient(135deg,var(--p),#4f1f9e);
+  border:none;border-radius:14px;color:#fff;font-size:16px;font-weight:800;cursor:pointer;
+  font-family:'Hind Siliguri',sans-serif;letter-spacing:0.3px;
+  animation:pulseGlow 2.5s infinite;
+  transition:transform 0.1s,filter 0.2s;}
+.t-play:active{transform:scale(0.97);}
+.t-credit{text-align:center;font-size:9px;color:var(--mu2);margin-top:8px;letter-spacing:0.5px;}
+
+/* ═══════════════════════════════
+   CHARACTER SYSTEM
+═══════════════════════════════ */
+.char{position:absolute;bottom:40px;display:flex;flex-direction:column;align-items:center;
+  transition:opacity 0.4s,transform 0.5s cubic-bezier(0.34,1.4,0.64,1);}
+.char.out{opacity:0;}
+.char.in{opacity:1;}
+
+#ch-s{left:14px;}
+#ch-s.out{transform:translateX(-140px);}
+#ch-s.in{transform:translateX(0);}
+
+#ch-n{right:14px;}
+#ch-n.out{transform:translateX(140px);}
+#ch-n.in{transform:translateX(0);}
+
+#ch-c{left:50%;transform:translateX(-50%);}
+#ch-c.out{opacity:0;transform:translateX(-50%) translateY(80px);}
+#ch-c.in{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* Character body parts - slightly larger for better visibility */
+.ch-head{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:28px;position:relative;z-index:2;flex-shrink:0;}
+.ch-torso{width:38px;height:36px;border-radius:8px 8px 4px 4px;margin-top:-4px;position:relative;flex-shrink:0;}
+.ch-arm-l,.ch-arm-r{position:absolute;top:5px;width:11px;height:26px;border-radius:5px;}
+.ch-arm-l{left:-10px;transform-origin:top center;}
+.ch-arm-r{right:-10px;transform-origin:top center;}
+.ch-legs{display:flex;gap:5px;margin-top:2px;}
+.ch-leg{width:12px;height:20px;border-radius:3px 3px 5px 5px;}
+
+/* Tag - improved visibility with background blur */
+.ch-tag{font-size:8.5px;font-weight:700;padding:3px 9px;border-radius:20px;margin-top:6px;
+  white-space:nowrap;letter-spacing:0.3px;backdrop-filter:blur(4px);}
+
+/* SPEECH BUBBLE — repositioned to avoid clipping */
+.ch-bub{
+  position:absolute;
+
+  /* Default = player bubble ABOVE */
+  bottom:calc(100% + 10px);
+  left:50px;
+
+  background:rgba(20,20,40,0.97);
+  border:1px solid rgba(109,40,217,0.45);
+
+  border-radius:14px 14px 14px 2px;
+
+  padding:12px 16px;
+
+  font-size:13px;
+  line-height:1.6;
+
+  width:max-content;
+  max-width:240px;
+  min-width:160px;
+
+  color:#ccc;
+
+  opacity:0;
+  transition:opacity 0.35s 0.2s;
+
+  pointer-events:none;
+  z-index:30;
+
+  white-space:normal;
+  overflow-wrap:break-word;
+  word-break:break-word;
+}
+
+/* Show bubble */
+.ch-bub.show{
+  opacity:1;
+}
+
+/* NPC bubble BELOW character */
+#ch-n .ch-bub{
+  top:calc(100% + 10px);
+  bottom:auto;
+
+  left:auto;
+  right:50px;
+
+  border-radius:10px 10px 10px 0px;
+}
+
+/* char animations */
+.anim-shake{animation:shake 0.45s ease infinite;}
+.anim-bounce .ch-head,.anim-bounce .ch-torso{animation:bounce 0.65s ease infinite;}
+.anim-scared{animation:scared 0.35s ease infinite;}
+.anim-float{animation:float 2s ease infinite;}
+
+/* ═══════════════════════════════
+   GAME SCREEN LAYOUT
+═══════════════════════════════ */
+#scr-game{background:var(--bg);padding:0;}
+
+/* STAGE — taller to fit characters + speech bubbles */
+#stage{width:100%;height:220px;position:relative;overflow:visible;flex-shrink:0;
+  background:linear-gradient(180deg,#0a0a14 0%,#12121e 60%,#17172a 100%);}
+#stage::after{content:'';position:absolute;inset:0;overflow:hidden;
+  background:radial-gradient(ellipse 70% 60% at 50% 10%,rgba(109,40,217,0.1) 0%,transparent 70%);
+  pointer-events:none;}
+/* clip for overflow scroll but allow bubbles to show */
+#stage-clip{position:absolute;inset:0;overflow:hidden;}
+.s-floor{position:absolute;bottom:0;left:0;right:0;height:44px;
+  background:linear-gradient(180deg,#17172a,#0f0f1e);
+  border-top:2px solid rgba(109,40,217,0.25);}
+.s-floor-glow{position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(109,40,217,0.5),rgba(6,182,212,0.5),transparent);}
+.s-scan{position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.03) 3px,rgba(0,0,0,0.03) 4px);
+  pointer-events:none;z-index:1;}
+#starfield{position:absolute;inset:0;pointer-events:none;}
+
+/* Characters sit on floor — relative to stage bottom */
+.char{bottom:44px !important;}
+
+/* DAMAGE FLOAT */
+.dmg{position:absolute;font-size:13px;font-weight:900;pointer-events:none;
+  animation:dmgPop 1.1s ease forwards;z-index:50;white-space:nowrap;text-shadow:0 0 8px currentColor;}
+
+/* HUD */
+#hud{width:100%;padding:9px 13px 7px;background:var(--bg2);
+  border-bottom:1px solid rgba(42,42,69,0.8);flex-shrink:0;}
+.hud-row1{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:8px;}
+.hud-cgpa-wrap{}
+.hud-cgpa-lbl{font-size:7px;color:var(--mu);text-transform:uppercase;letter-spacing:1.5px;
+  margin-bottom:1px;font-family:'Space Mono',monospace;}
+.hud-cgpa{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;transition:color 0.5s;}
+.hud-right{text-align:right;}
+.hud-player{font-size:11px;color:var(--pl);font-weight:700;animation:nameGlow 3s infinite;letter-spacing:0.3px;}
+.hud-turn-txt{font-size:8px;color:var(--mu2);margin-top:2px;font-family:'Space Mono',monospace;}
+.hud-bars{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:6px;}
+.hud-bar{display:flex;flex-direction:column;gap:2px;}
+.hud-bar-lbl{font-size:7.5px;color:var(--mu);display:flex;justify-content:space-between;align-items:center;}
+.hud-bar-val{font-size:9.5px;font-weight:700;}
+.hud-track{height:5px;background:rgba(42,42,69,0.8);border-radius:3px;overflow:hidden;margin-top:1px;}
+.hud-fill{height:100%;border-radius:3px;transition:width 0.6s cubic-bezier(0.22,1,0.36,1),background 0.4s;}
+.pip-row{display:flex;gap:2px;}
+.pip{height:3px;flex:1;background:rgba(42,42,69,0.8);border-radius:2px;transition:background 0.4s;}
+.pip.done{background:var(--p);}
+.pip.now{background:var(--cy);animation:flicker 1.5s infinite;}
+
+/* STORY AREA */
+#story{width:100%;padding:8px 12px;flex:1;display:flex;flex-direction:column;gap:8px;overflow-y:auto;}
+
+/* EVENT CARD */
+#ev-card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;
+  position:relative;overflow:hidden;flex-shrink:0;
+  box-shadow:0 4px 20px rgba(0,0,0,0.3);}
+#ev-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--ev-col,var(--p));border-radius:16px 16px 0 0;}
+.ev-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.ev-cat{display:flex;align-items:center;gap:5px;font-size:8px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;font-family:'Space Mono',monospace;}
+.ev-dot{width:6px;height:6px;border-radius:50%;}
+.ev-turn{font-size:7.5px;color:var(--mu);background:rgba(42,42,69,0.6);
+  padding:2px 8px;border-radius:20px;font-family:'Space Mono',monospace;}
+#ev-text{font-size:13.5px;font-weight:600;line-height:1.6;color:var(--tx);}
+#ev-hook{font-size:10.5px;color:var(--mu);margin-top:5px;font-style:italic;padding-top:5px;
+  border-top:1px solid rgba(42,42,69,0.5);}
+
+/* OUTCOME */
+#outcome{padding:11px 14px;border-radius:12px;font-size:12.5px;font-weight:600;
+  text-align:center;display:none;line-height:1.6;animation:slideUp 0.3s ease;
+  border-left:3px solid;}
+#outcome.bad{background:rgba(239,68,68,0.07);border-color:var(--re);color:#fca5a5;}
+#outcome.good{background:rgba(16,185,129,0.07);border-color:var(--gr);color:#6ee7b7;}
+#outcome.twist{background:rgba(245,158,11,0.07);border-color:var(--ye);color:#fcd34d;}
+#outcome.doom{background:rgba(239,68,68,0.12);border-color:#b91c1c;color:#f87171;
+  animation:statWarn 1s ease infinite;}
+
+/* CHOICES */
+#choices{display:flex;flex-direction:column;gap:8px;}
+.c-btn{width:100%;padding:0;border:1.5px solid;border-radius:14px;background:transparent;
+  cursor:pointer;font-family:'Hind Siliguri',sans-serif;text-align:left;overflow:hidden;display:block;
+  transition:transform 0.1s,border-color 0.2s,background 0.2s;
+  box-shadow:0 2px 8px rgba(0,0,0,0.2);}
+.c-btn:active{transform:scale(0.97);}
+.c-inner{display:flex;align-items:stretch;}
+.c-bar{width:4px;flex-shrink:0;}
+.c-body{flex:1;padding:11px 13px;}
+.c-top{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+.c-ico{font-size:20px;line-height:1;flex-shrink:0;}
+.c-lbl{font-size:11px;font-weight:800;letter-spacing:0.5px;}
+.c-desc{font-size:12px;color:#8888aa;line-height:1.45;}
+
+.btn-a{border-color:rgba(236,72,153,0.25);}
+.btn-a .c-bar{background:var(--pk);}
+.btn-a .c-lbl{color:var(--pk);}
+.btn-a:hover{border-color:var(--pk);background:rgba(236,72,153,0.05);}
+
+.btn-b{border-color:rgba(6,182,212,0.25);}
+.btn-b .c-bar{background:var(--cy);}
+.btn-b .c-lbl{color:var(--cy);}
+.btn-b:hover{border-color:var(--cy);background:rgba(6,182,212,0.05);}
+
+/* DEATH */
+#death-wrap{display:none;padding:0 12px;}
+.death-card{background:var(--card);border:1px solid rgba(239,68,68,0.35);border-radius:18px;
+  padding:24px 20px;text-align:center;animation:popIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow:0 8px 32px rgba(239,68,68,0.1);}
+.d-skull{font-size:56px;display:block;margin-bottom:12px;animation:heartbeat 0.7s infinite;}
+.d-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;
+  color:var(--re);margin-bottom:8px;}
+.d-reason{font-size:12px;color:var(--mu);line-height:1.7;margin-bottom:16px;}
+.d-stats{display:flex;gap:10px;margin-bottom:16px;}
+.d-stat{flex:1;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);
+  border-radius:12px;padding:12px 6px;text-align:center;}
+.d-sv{font-size:22px;font-weight:900;color:var(--re);font-family:'Bebas Neue',sans-serif;}
+.d-sl{font-size:8px;color:var(--mu);text-transform:uppercase;margin-top:3px;
+  font-family:'Space Mono',monospace;letter-spacing:0.5px;}
+.d-btn{width:100%;padding:13px;background:linear-gradient(135deg,#b91c1c,#7f1d1d);
+  border:none;border-radius:13px;color:#fff;font-size:13px;font-weight:800;cursor:pointer;
+  font-family:'Hind Siliguri',sans-serif;letter-spacing:0.3px;}
+
+/* ═══════════════════════════════
+   ARC POPUP OVERLAY
+═══════════════════════════════ */
+#arc-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:200;
+  display:none;align-items:center;justify-content:center;padding:20px;
+  animation:overlayFadeIn 0.3s ease;backdrop-filter:blur(4px);}
+#arc-overlay.show{display:flex;}
+.arc-popup{background:var(--bg3);border-radius:22px;padding:26px 22px;max-width:380px;width:100%;
+  text-align:center;animation:arcReveal 0.4s cubic-bezier(0.34,1.4,0.64,1);
+  border:1px solid var(--bd);position:relative;overflow:hidden;
+  box-shadow:0 16px 48px rgba(0,0,0,0.5);}
+.arc-popup::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.arc-emoji{font-size:52px;display:block;margin-bottom:12px;animation:float 2s ease infinite;}
+.arc-badge{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:12px;
+  font-family:'Space Mono',monospace;}
+.arc-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;margin-bottom:12px;}
+.arc-desc{font-size:12.5px;color:#9999bb;line-height:1.7;margin-bottom:20px;}
+.arc-btn{width:100%;padding:14px;border:none;border-radius:14px;font-size:13px;font-weight:800;
+  cursor:pointer;font-family:'Hind Siliguri',sans-serif;transition:transform 0.1s,filter 0.2s;
+  letter-spacing:0.3px;}
+.arc-btn:active{transform:scale(0.97);}
+.arc-btn:hover{filter:brightness(1.1);}
+
+/* ═══════════════════════════════
+   RESULT SCREEN — Complete redesign
+═══════════════════════════════ */
+#scr-result{background:var(--bg);padding-bottom:28px;overflow-y:auto;}
+
+/* Result header */
+.r-head{padding:20px 16px 0;text-align:center;position:relative;}
+.r-head::before{content:'';position:absolute;top:0;left:0;right:0;height:120px;
+  background:radial-gradient(ellipse 80% 100% at 50% 0%,rgba(109,40,217,0.12),transparent);
+  pointer-events:none;}
+.r-player-name{font-size:11px;color:var(--pl);font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;margin-bottom:4px;animation:nameGlow 3s infinite;
+  font-family:'Space Mono',monospace;}
+.r-sub-lbl{font-size:9px;color:var(--mu);text-transform:uppercase;letter-spacing:2px;
+  margin-bottom:10px;font-family:'Space Mono',monospace;}
+.r-cgpa{font-family:'Bebas Neue',sans-serif;font-size:80px;line-height:1;
+  animation:popIn 0.6s cubic-bezier(0.34,1.56,0.64,1);}
+.r-cgpa-lbl{font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:2px;
+  margin-top:2px;font-family:'Space Mono',monospace;}
+.r-badge{display:inline-block;font-size:13px;font-weight:800;padding:8px 20px;
+  border-radius:20px;margin:14px 0 6px;animation:slideUp 0.5s 0.2s both;}
+.r-flavor{font-size:11px;color:var(--mu);line-height:1.7;font-style:italic;
+  margin-bottom:18px;padding:0 14px;}
+
+/* Stats card */
+.r-card{margin:0 12px 12px;background:var(--card);border:1px solid var(--bd);border-radius:20px;
+  padding:18px;position:relative;overflow:hidden;
+  box-shadow:0 4px 24px rgba(0,0,0,0.25);}
+.r-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--p),var(--cy),var(--pk),var(--ye));}
+.r-card-title{font-size:8.5px;color:var(--mu);text-transform:uppercase;letter-spacing:1.5px;
+  margin-bottom:12px;font-family:'Space Mono',monospace;}
+.r-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;}
+.r-stat{background:var(--bg3);border:1px solid var(--bd);border-radius:12px;padding:12px;
+  text-align:center;transition:border-color 0.2s;}
+.r-sv{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:0.5px;}
+.r-sl{font-size:7.5px;color:var(--mu);text-transform:uppercase;letter-spacing:0.5px;margin-top:3px;
+  font-family:'Space Mono',monospace;}
+
+/* Blame section */
+.blame-section{background:var(--bg3);border:1px solid var(--bd);border-radius:14px;padding:14px;}
+.blame-head{font-size:9px;color:var(--mu);text-transform:uppercase;letter-spacing:1.5px;
+  margin-bottom:12px;text-align:center;font-family:'Space Mono',monospace;}
+.b-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.b-lbl{font-size:9.5px;color:#8888aa;width:90px;text-align:right;flex-shrink:0;}
+.b-trk{flex:1;height:8px;background:rgba(42,42,69,0.8);border-radius:4px;overflow:hidden;}
+.b-fill{height:100%;border-radius:4px;transition:width 1.4s cubic-bezier(0.22,1,0.36,1);}
+.b-pct{font-size:8.5px;color:var(--mu);width:26px;font-weight:700;font-family:'Space Mono',monospace;}
+
+/* Verdict section */
+.verdict-section{margin:0 12px 12px;background:var(--card);border:1px solid var(--bd);
+  border-radius:16px;padding:16px;text-align:center;
+  box-shadow:0 4px 16px rgba(0,0,0,0.2);}
+.v-label{font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:2px;
+  margin-bottom:4px;font-family:'Space Mono',monospace;}
+.v-title{font-size:8.5px;color:var(--pl);margin-bottom:12px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;}
+.v-text{font-size:12.5px;color:var(--tx);line-height:1.75;}
+.v-criminal{font-size:16px;font-weight:800;color:var(--pk);display:block;
+  margin-top:10px;padding:8px 14px;background:rgba(236,72,153,0.08);
+  border-radius:10px;border:1px solid rgba(236,72,153,0.2);
+  animation:heartbeat 2s infinite;}
+
+/* Action buttons */
+.r-actions{padding:0 12px;display:flex;flex-direction:column;gap:8px;}
+.r-share{width:100%;padding:14px;background:transparent;
+  border:1.5px solid rgba(109,40,217,0.4);border-radius:14px;
+  color:var(--pl);font-size:13px;font-weight:700;cursor:pointer;
+  font-family:'Hind Siliguri',sans-serif;transition:background 0.2s,border-color 0.2s;}
+.r-share:hover{background:rgba(109,40,217,0.1);border-color:var(--p);}
+.r-retry{width:100%;padding:14px;background:linear-gradient(135deg,var(--p),#4f1f9e);
+  border:none;border-radius:14px;color:#fff;font-size:13px;font-weight:800;cursor:pointer;
+  font-family:'Hind Siliguri',sans-serif;transition:filter 0.2s;}
+.r-retry:hover{filter:brightness(1.1);}
+.r-credit{text-align:center;font-size:9px;color:var(--mu2);margin-top:8px;letter-spacing:0.5px;}
+
+/* Creator credit in result */
+.r-creator{text-align:center;margin:0 12px 12px;background:var(--bg3);
+  border:1px solid rgba(109,40,217,0.25);border-radius:12px;padding:10px;}
+.r-creator-lbl{font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:1.5px;
+  margin-bottom:3px;font-family:'Space Mono',monospace;}
+.r-creator-name{font-size:14px;font-weight:700;color:var(--pl);animation:nameGlow 3s infinite;}
+</style>
+</head>
+<body>
+<div id="G">
+
+<!-- ══════════════════════════════
+     TITLE SCREEN
+══════════════════════════════ -->
+<div class="scr on" id="scr-title">
+  <div class="t-stage" id="t-stage">
+    <div id="t-stars"></div>
+
+    <!-- Student char on title stage -->
+    <div class="t-char" style="left:14px;" id="ts-stu">
+      <div style="position:relative;">
+        <div class="ch-bub show" style="font-size:9px;left:46px;">আর পারছি না... 😭</div>
+        <div style="animation:scared 0.4s ease infinite;">
+          <div class="ch-head" style="background:#1e1535;border:2px solid var(--p);">😭</div>
+          <div class="ch-torso" style="background:#1a2d4a;">
+            <div class="ch-arm-l" style="background:#1a2d4a;"></div>
+            <div class="ch-arm-r" style="background:#1a2d4a;"></div>
+          </div>
+          <div class="ch-legs"><div class="ch-leg" style="background:#142035;"></div><div class="ch-leg" style="background:#142035;"></div></div>
+        </div>
+      </div>
+      <div class="ch-tag" style="background:rgba(109,40,217,0.2);color:var(--pl);border:1px solid rgba(109,40,217,0.3);">তুমি</div>
+    </div>
+
+    <!-- Teacher char on title stage -->
+    <div class="t-char" style="right:14px;">
+      <div style="position:relative;">
+        <div class="ch-bub show" style="font-size:9px;left:auto;right:46px;border-radius:10px 10px 0px 10px;">সিলেবাস ডাবল! 😡</div>
+        <div style="animation:shake 0.5s ease infinite;">
+          <div class="ch-head" style="background:#261414;border:2px solid #dc2626;">😡</div>
+          <div class="ch-torso" style="background:#1e1414;">
+            <div class="ch-arm-l" style="background:#1e1414;"></div>
+            <div class="ch-arm-r" style="background:#1e1414;"></div>
+          </div>
+          <div class="ch-legs"><div class="ch-leg" style="background:#160e0e;"></div><div class="ch-leg" style="background:#160e0e;"></div></div>
+        </div>
+      </div>
+      <div class="ch-tag" style="background:rgba(239,68,68,0.15);color:var(--re);border:1px solid rgba(239,68,68,0.3);">স্যার</div>
+    </div>
+
+    <!-- Title text on stage — centered, not overlapping chars -->
+    <div class="stage-title-wrap">
+      <span class="stage-title-main">
+        <span style="color:var(--pl);">আমার CG</span>
+        <span style="color:var(--cy);"> খাইলো কে?</span>
+      </span>
+      <span class="stage-title-sub-sm">Who Stole My CGPA?</span>
+    </div>
+
+    <div class="t-floor"><div class="t-floor-line"></div></div>
+  </div>
+
+  <div style="width:100%;padding:12px 14px 0;">
+    <div class="t-logo">
+      <div class="t-logo-main">Private University Survival Simulator</div>
+      <div class="t-by">Crafted with suffering 😭 · by TauFique</div>
+    </div>
+
+    <div class="t-features">
+      <div class="t-feat"><span class="t-feat-ic">🎭</span><div class="t-feat-tx">Live Character System</div></div>
+      <div class="t-feat"><span class="t-feat-ic">🎲</span><div class="t-feat-tx">Unpredictable Outcomes</div></div>
+      <div class="t-feat"><span class="t-feat-ic">💀</span><div class="t-feat-tx">Only 5% Survive</div></div>
+    </div>
+
+    <div class="t-info">
+      <div class="t-info-tx"><b>No right answer exists.</b> Every choice has consequences. Even doing things right — <b>problems still come 50% of the time.</b> Survive 15 turns.</div>
+    </div>
+
+    <div class="t-name-wrap">
+      <div class="t-name-label">Enter Your Name</div>
+      <input class="t-name-input" id="name-input" type="text" placeholder="e.g. Raihan, Tanha, Shuvo..." maxlength="20">
+    </div>
+
+    <button class="t-play" onclick="GAME.start()">💀 Start Suffering →</button>
+    <div class="t-credit">Made with pain · TauFique's Edition · v5</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     GAME SCREEN
+══════════════════════════════ -->
+<div class="scr" id="scr-game">
+
+  <!-- STAGE -->
+  <div id="stage">
+    <div id="stage-clip">
+      <div id="starfield"></div>
+      <div class="s-scan"></div>
+      <div class="s-floor"><div class="s-floor-glow"></div></div>
+    </div>
+
+    <!-- Student char -->
+    <div class="char out" id="ch-s">
+      <div style="position:relative;">
+        <div class="ch-bub" id="bub-s"></div>
+        <div id="s-body">
+          <div class="ch-head" id="s-face" style="background:#1e1535;border:2px solid var(--p);">😭</div>
+          <div class="ch-torso" style="background:#1a2d4a;position:relative;">
+            <div class="ch-arm-l" style="background:#1a2d4a;" id="s-arm-l"></div>
+            <div class="ch-arm-r" style="background:#1a2d4a;" id="s-arm-r"></div>
+          </div>
+          <div class="ch-legs"><div class="ch-leg" style="background:#142035;"></div><div class="ch-leg" style="background:#142035;"></div></div>
+        </div>
+      </div>
+      <div class="ch-tag" id="s-tag" style="background:rgba(109,40,217,0.2);color:var(--pl);border:1px solid rgba(109,40,217,0.3);">Player</div>
+    </div>
+
+    <!-- NPC char -->
+    <div class="char out" id="ch-n">
+      <div style="position:relative;">
+        <div class="ch-bub" id="bub-n"></div>
+        <div id="n-body">
+          <div class="ch-head" id="n-face" style="background:#261414;border:2px solid #dc2626;">😡</div>
+          <div class="ch-torso" id="n-torso" style="background:#1e1414;position:relative;">
+            <div class="ch-arm-l" id="n-arm-l" style="background:#1e1414;"></div>
+            <div class="ch-arm-r" id="n-arm-r" style="background:#1e1414;"></div>
+          </div>
+          <div class="ch-legs">
+            <div class="ch-leg" id="n-leg-l" style="background:#160e0e;"></div>
+            <div class="ch-leg" id="n-leg-r" style="background:#160e0e;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="ch-tag" id="n-tag" style="background:rgba(239,68,68,0.15);color:var(--re);border:1px solid rgba(239,68,68,0.3);">স্যার</div>
+    </div>
+
+    <!-- Center char -->
+    <div class="char out" id="ch-c">
+      <div style="position:relative;">
+        <div class="ch-bub" id="bub-c"></div>
+        <div id="c-body">
+          <div class="ch-head" id="c-face" style="background:#0e2018;border:2px solid #16a34a;">👻</div>
+          <div class="ch-torso" id="c-torso" style="background:#142018;position:relative;">
+            <div class="ch-arm-l" id="c-arm-l" style="background:#142018;"></div>
+            <div class="ch-arm-r" id="c-arm-r" style="background:#142018;"></div>
+          </div>
+          <div class="ch-legs">
+            <div class="ch-leg" id="c-leg-l" style="background:#0e1812;"></div>
+            <div class="ch-leg" id="c-leg-r" style="background:#0e1812;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="ch-tag" id="c-tag" style="background:rgba(16,185,129,0.12);color:var(--gr);border:1px solid rgba(16,185,129,0.25);">Group</div>
+    </div>
+  </div>
+
+  <!-- HUD -->
+  <div id="hud">
+    <div class="hud-row1">
+      <div class="hud-cgpa-wrap">
+        <div class="hud-cgpa-lbl">CGPA</div>
+        <div class="hud-cgpa" id="h-cgpa">4.00</div>
+      </div>
+      <div class="hud-right">
+        <div class="hud-player" id="h-player">Player</div>
+        <div class="hud-turn-txt" id="h-turn">Turn 1 / 15</div>
+      </div>
+    </div>
+    <div class="hud-bars">
+      <div class="hud-bar">
+        <div class="hud-bar-lbl"><span style="color:var(--cy);">😴 Sleep</span><span id="hv-s" class="hud-bar-val" style="color:var(--cy);">100</span></div>
+        <div class="hud-track"><div class="hud-fill" id="hf-s" style="background:var(--cy);width:100%;"></div></div>
+      </div>
+      <div class="hud-bar">
+        <div class="hud-bar-lbl"><span style="color:var(--pk);">😰 Mental</span><span id="hv-m" class="hud-bar-val" style="color:var(--pk);">100</span></div>
+        <div class="hud-track"><div class="hud-fill" id="hf-m" style="background:var(--pk);width:100%;"></div></div>
+      </div>
+      <div class="hud-bar">
+        <div class="hud-bar-lbl"><span style="color:var(--or);">🏃 Social</span><span id="hv-c" class="hud-bar-val" style="color:var(--or);">100</span></div>
+        <div class="hud-track"><div class="hud-fill" id="hf-c" style="background:var(--or);width:100%;"></div></div>
+      </div>
+    </div>
+    <div class="pip-row" id="pip-row"></div>
+  </div>
+
+  <!-- STORY -->
+  <div id="story">
+    <div id="ev-card" style="--ev-col:var(--p);">
+      <div class="ev-top">
+        <div class="ev-cat"><div class="ev-dot" id="ev-dot" style="background:var(--p);"></div><span id="ev-cat" style="color:var(--p);">LOADING</span></div>
+        <div class="ev-turn" id="ev-turn-badge">1/15</div>
+      </div>
+      <div id="ev-text">Loading...</div>
+      <div id="ev-hook"></div>
+    </div>
+
+    <div id="outcome"></div>
+
+    <div id="choices">
+      <button class="c-btn btn-a" id="btn-a" onclick="GAME.pick(0)">
+        <div class="c-inner"><div class="c-bar"></div>
+          <div class="c-body">
+            <div class="c-top"><span class="c-ico" id="ico-a">❓</span><span class="c-lbl" id="lbl-a">Choice A</span></div>
+            <div class="c-desc" id="desc-a">...</div>
+          </div>
+        </div>
+      </button>
+      <button class="c-btn btn-b" id="btn-b" onclick="GAME.pick(1)">
+        <div class="c-inner"><div class="c-bar"></div>
+          <div class="c-body">
+            <div class="c-top"><span class="c-ico" id="ico-b">❓</span><span class="c-lbl" id="lbl-b">Choice B</span></div>
+            <div class="c-desc" id="desc-b">...</div>
+          </div>
+        </div>
+      </button>
+    </div>
+
+    <div id="death-wrap"></div>
+  </div>
+</div>
+
+<!-- ARC POPUP OVERLAY -->
+<div id="arc-overlay">
+  <div class="arc-popup" id="arc-popup">
+    <span class="arc-emoji" id="arc-emoji">💀</span>
+    <div class="arc-badge" id="arc-badge">ARC</div>
+    <div class="arc-title" id="arc-title">Title</div>
+    <div class="arc-desc" id="arc-desc">Description</div>
+    <button class="arc-btn" id="arc-btn" onclick="GAME.closeArc()">Got it, keep going →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     RESULT SCREEN
+══════════════════════════════ -->
+<div class="scr" id="scr-result">
+  <div class="r-head">
+    <div class="r-player-name" id="r-player-name">TAUFIQUE</div>
+    <div class="r-sub-lbl">Semester Report Card 💀</div>
+    <div class="r-cgpa" id="r-cgpa">2.41</div>
+    <div class="r-cgpa-lbl">Final CGPA</div>
+    <div class="r-badge" id="r-badge">Loading...</div>
+    <div class="r-flavor" id="r-flavor"></div>
+  </div>
+
+  <div class="r-card">
+    <div class="r-card-title">📊 Final Stats</div>
+    <div class="r-grid">
+      <div class="r-stat"><div class="r-sv" id="rs-sleep" style="color:var(--cy);">-</div><div class="r-sl">😴 Sleep Left</div></div>
+      <div class="r-stat"><div class="r-sv" id="rs-mental" style="color:var(--pk);">-</div><div class="r-sl">😰 Mental Health</div></div>
+      <div class="r-stat"><div class="r-sv" id="rs-social" style="color:var(--or);">-</div><div class="r-sl">🏃 Social Life</div></div>
+      <div class="r-stat"><div class="r-sv" id="rs-turns" style="color:var(--pl);">-</div><div class="r-sl">⚔️ Turns Survived</div></div>
+    </div>
+    <div class="blame-section">
+      <div class="blame-head">🔍 Who Ate Your CGPA?</div>
+      <div id="blame-bars"></div>
+    </div>
+  </div>
+
+  <div class="verdict-section">
+    <div class="v-label">Judge's Verdict</div>
+    <div class="v-title">by TauFique 🎓</div>
+    <div class="v-text" id="v-text">Analyzing...</div>
+  </div>
+
+  <div class="r-creator">
+    <div class="r-creator-lbl">Game Created By</div>
+    <div class="r-creator-name">TauFique</div>
+  </div>
+
+  <div class="r-actions">
+    <button class="r-share" onclick="GAME.share()">📤 Share with Friends</button>
+    <button class="r-retry" onclick="GAME.restart()">🔄 Try Again</button>
+    <div class="r-credit">Made with suffering 😭 · TauFique's Edition</div>
+  </div>
+</div>
+
+</div><!-- #G -->
+
+<script>
+// ═══════════════════════════════════════════════════
+// EVENT DATABASE
+// All events text in Bangla, all UI/popups in English
+// aTwist/bTwist chance increased for problems even on correct choices
+// ═══════════════════════════════════════════════════
+const EVENTS = [
+  // ── ACADEMIC ──
+  {
+    id:'syllabus_double',
+    cat:'MIDTERM CRISIS', col:'#a78bfa', dot:'#7c3aed',
+    chars:'teacher+student',
+    npc:{face:'😡',torso:'#1c1010',legs:'#120808',armCol:'#1c1010',tag:'Aziz Sir😡',tagBg:'rgba(239,68,68,0.15)',tagCol:'#f87171',anim:'shake',say:'সিলেবাস ডাবল করলাম। সমস্যা?'},
+    stu:{face:'😰',say:'কী হলো বাই...'},
+    text:'মিডটার্মের দুই দিন আগে স্যার সিলেবাস দ্বিগুণ করলেন। বললেন "এটা সবসময়ই ছিল।" নতুন ১২টা চ্যাপ্টার। তুমি পড়েছ ১টা।',
+    hook:'পরীক্ষা আজ থেকে ৪৮ ঘণ্টা পরে।',
+    a:{ico:'🛌',lbl:'Sleep and Pray',desc:'Rest and hope for divine intervention. Leave the exam to fate.'},
+    b:{ico:'📖',lbl:'All-Night Study',desc:'Pull an all-nighter. Try to finish every chapter before sunrise.'},
+    aEff:{cgpa:-0.35,sleep:10,mental:-10,social:-10},
+    aOut:{msg:'পরীক্ষায় ৭টা প্রশ্নের মধ্যে ৬টাই নতুন চ্যাপ্টার থেকে। স্যার হাসলেন। 📉',type:'bad'},
+    bEff:{cgpa:0.1,sleep:-32,mental:-18,social:-5},
+    bOut:{msg:'সকাল ৫টায় শেষ করলে। ৬০% মনে ছিল। পাস করলে। কোনোভাবে। 😮‍💨',type:'good'},
+    aArc:null,
+    bArc:null,
+    aTwist:{chance:0.3,msg:'Surprise: The professor cancelled class that day. Your sleep actually paid off! 😂',type:'twist'},
+    bTwist:{chance:0.5,msg:'Five hours in, power cut. Phone dead. The remaining chapters stayed unread. 💀',type:'doom'},
+    blame:'teacher'
+  },
+  // ── FRIEND TRUST ──
+  {
+    id:'friend_borrow',
+    cat:'FRIEND TEST', col:'#22d3ee', dot:'#0e7490',
+    chars:'center+student',
+    ctr:{face:'🙂',torso:'#0a1e2a',legs:'#07161e',armCol:'#0a1e2a',tag:'Rafi 🙂',tagBg:'rgba(6,182,212,0.1)',tagCol:'#22d3ee',anim:'bounce',say:'ভাই একটা কাজ করতে পারবি?'},
+    stu:{face:'🤔',say:'কী কাজ?'},
+    text:'বন্ধু রাফি বললো পরীক্ষার এক ঘণ্টা আগে তার অ্যাডমিট কার্ড হারিয়ে গেছে। তোমার অ্যাডমিট কার্ড দিয়ে ঢুকতে বললো। "মাত্র একবার, ভাই।"',
+    hook:'ধরা পড়লে দুজনেরই পরীক্ষা বাতিল।',
+    a:{ico:'🤝',lbl:'Give Your Card',desc:'Stand by your friend. He\'s always been there for you.'},
+    b:{ico:'🙏',lbl:'Politely Refuse',desc:'This risk is too high. Explain the rules and back away.'},
+    aEff:{cgpa:0,sleep:0,mental:-25,social:10},
+    aOut:{msg:'রাফি ভেতরে ঢুকল। তুমি বাইরে বসে নখ কামড়ালে এক ঘণ্টা। 😰',type:'bad'},
+    bEff:{cgpa:0,sleep:0,mental:-15,social:-10},
+    bOut:{msg:'রাফি কিছু বললো না। কিন্তু সেদিন থেকে আর আগের মতো কথা নেই। 😔',type:'bad'},
+    aArc:null,
+    bArc:null,
+    aTwist:{chance:0.45,msg:'The invigilator didn\'t check the card. Rafi passed. You became a legend — only you know the anxiety. 😤',type:'twist'},
+    bTwist:{chance:0.5,msg:'Rafi found out he could get a duplicate card from the department office. He sat the exam anyway. Your "no" was pointless. 💀',type:'doom'},
+    blame:'luck'
+  },
+  // ── GROUP PROJECT ──
+  {
+    id:'group_ghost',
+    cat:'GROUP PROJECT DISASTER', col:'#22d3ee', dot:'#0e7490',
+    chars:'center+student',
+    ctr:{face:'👻',torso:'#0e1e18',legs:'#0a1612',armCol:'#0e1e18',tag:'Imran 👻',tagBg:'rgba(16,185,129,0.1)',tagCol:'#4ade80',anim:'bounce',say:'Seen ✓✓ (৪ দিন আগে)'},
+    stu:{face:'😤',say:'ইমরান... ইমরান!'},
+    text:'প্রেজেন্টেশন আগামীকাল সকাল ৮টায়। ইমরান ৪ দিন ধরে গায়েব। সে পাঠিয়েছে ২ প্যারা Wikipedia থেকে কপি করা। এখন রাত ১১:৪৭।',
+    hook:'তার নামও রিপোর্টে আছে।',
+    a:{ico:'📋',lbl:'Submit What You Have',desc:'Format Imran\'s 2 paragraphs and submit. At least something.'},
+    b:{ico:'🔥',lbl:'Write It All Yourself',desc:'3 hours. From scratch. Controlled rage mode activated.'},
+    aEff:{cgpa:-0.4,sleep:5,mental:-20,social:-15},
+    aOut:{msg:'স্যার পড়লেন। বললেন "এটা Wikipedia থেকে।" ইমরান বললো "আমরা চেষ্টা করেছিলাম।" 💀',type:'bad'},
+    bEff:{cgpa:0.25,sleep:-28,mental:-22,social:-20},
+    bOut:{msg:'রাত ৩টায় জমা দিলে। আসল রিপোর্ট। ইমরান প্রেজেন্টেশনে এসে সমান ক্রেডিট নিল। 😤',type:'good'},
+    aArc:{emoji:'🗡️',badge:'BETRAYAL ARC',title:'Imran knew he\'d do nothing!',desc:'"Don\'t worry bro" translates to "I won\'t do anything." This is the unwritten law of private university group projects.',col:'#f472b6',bg:'rgba(236,72,153,0.1)'},
+    bArc:null,
+    aTwist:null,
+    bTwist:{chance:0.5,msg:'The professor said the report was good, but "group projects mean everyone together." Imran\'s absence cost everyone marks. 💀',type:'doom'},
+    blame:'group'
+  },
+  // ── VIVA TERROR ──
+  {
+    id:'viva_terror',
+    cat:'VIVA TERROR', col:'#a78bfa', dot:'#7c3aed',
+    chars:'teacher+student',
+    npc:{face:'🧐',torso:'#1a1428',legs:'#12101e',armCol:'#1a1428',tag:'Rashid Sir 🧐',tagBg:'rgba(109,40,217,0.15)',tagCol:'#a78bfa',anim:'float',say:'"ওই প্রশ্নটার উত্তর বলো।"'},
+    stu:{face:'😨',say:'জানতাম কিন্তু...'},
+    text:'ভাইভাতে স্যার এমন একটা প্রশ্ন করলেন যা তুমি জানো কিন্তু ঠিকমতো বলতে পারছ না। ঘাম ঝরছে। স্যার চোখ সরাচ্ছেন না।',
+    hook:'সামনে ৫ জন এখনো অপেক্ষায় আছে।',
+    a:{ico:'🎭',lbl:'Bluff Confidently',desc:'Say something. Confidence might just carry you through.'},
+    b:{ico:'🤷',lbl:'Admit You\'re Stuck',desc:'Honestly say you know the concept but can\'t articulate it right now.'},
+    aEff:{cgpa:0.1,sleep:0,mental:-15,social:0},
+    aOut:{msg:'স্যার সন্দেহজনকভাবে তাকালেন। কিন্তু মার্কস দিলেন। কপাল মনে হয়। 😅',type:'good'},
+    bEff:{cgpa:-0.2,sleep:0,mental:-8,social:5},
+    bOut:{msg:'স্যার বললেন "সৎ উত্তর।" তারপরও মার্কস কাটলেন। সততার দাম আছে। 😔',type:'bad'},
+    aArc:null,
+    bArc:{emoji:'🎓',badge:'INTEGRITY ARC',title:'The system doesn\'t always reward honesty.',desc:'Sometimes saying "I don\'t know" costs more than saying something wrong confidently. Unfair, but real.',col:'#a78bfa',bg:'rgba(109,40,217,0.1)'},
+    aTwist:{chance:0.5,msg:'The professor actually asked a follow-up. The bluff unraveled. He smiled and cut your marks anyway. 💀',type:'doom'},
+    bTwist:{chance:0.4,msg:'Surprisingly, he appreciated the honesty and added a bonus point. Rare W. 🌟',type:'twist'},
+    blame:'teacher'
+  },
+  // ── WIFI EXAM ──
+  {
+    id:'wifi_exam',
+    cat:'SYSTEM FAILURE', col:'#38bdf8', dot:'#0ea5e9',
+    chars:'teacher+student',
+    npc:{face:'🤖',torso:'#0a1520',legs:'#071018',armCol:'#0a1520',tag:'Campus WiFi 🤖',tagBg:'rgba(56,189,248,0.1)',tagCol:'#38bdf8',anim:'shake',say:'Connection lost. হাহাহা।'},
+    stu:{face:'😱',say:'আরো ১৩ মিনিট ছিল!!'},
+    text:'অনলাইন পরীক্ষা। প্রশ্ন ৯/২০। WiFi গেল। টাইমার চলছে। ১৩ মিনিট বাকি। ফোনে ৪০০MB ডেটা।',
+    hook:'টাইমার থামছে না।',
+    a:{ico:'🔄',lbl:'Keep Refreshing',desc:'The network might come back. Wait it out.'},
+    b:{ico:'📱',lbl:'Use Phone Hotspot',desc:'Burn the 400MB. Finish the exam at any cost.'},
+    aEff:{cgpa:-0.4,sleep:0,mental:-26,social:0},
+    aOut:{msg:'৮ মিনিট রিফ্রেশ করলে। ৪টা প্রশ্নের উত্তর দিলে বাকি সময়ে। 💀',type:'bad'},
+    bEff:{cgpa:-0.05,sleep:0,mental:-10,social:0},
+    bOut:{msg:'হটস্পট কাজ করল। ২ মিনিট বাকি থাকতে শেষ করলে। 😮‍💨',type:'good'},
+    aArc:{emoji:'📶',badge:'SYSTEM BETRAYAL ARC',title:'Why does WiFi always die during exams?',desc:'Server load spikes during exam hours. Nobody fixes it. Because they\'re all at home.',col:'#38bdf8',bg:'rgba(56,189,248,0.08)'},
+    bArc:null,
+    aTwist:null,
+    bTwist:{chance:0.5,msg:'The hotspot connected but data was already gone — you streamed shows last night. 💀',type:'doom'},
+    blame:'system'
+  },
+  // ── ATTENDANCE CRISIS ──
+  {
+    id:'attendance_crisis',
+    cat:'ATTENDANCE TRAP', col:'#f87171', dot:'#dc2626',
+    chars:'teacher+student',
+    npc:{face:'😡',torso:'#1a0808',legs:'#120505',armCol:'#1a0808',tag:'Karim Sir 😡',tagBg:'rgba(239,68,68,0.12)',tagCol:'#f87171',anim:'shake',say:'"৭৫% লাগবে। তোমার ৭১%।"'},
+    stu:{face:'💀',say:'স্যার প্লিজ...'},
+    text:'হাজিরার শিট প্রকাশ হলো। তুমি ৭১%-এ। পরীক্ষায় বসতে ৭৫% লাগবে। বাকি ৩টা ক্লাস।',
+    hook:'গণনা করলে: সব ক্লাস গেলেও ৭৩.৮% হবে।',
+    a:{ico:'🙏',lbl:'Beg Directly',desc:'Go to his room. Mercy is your only option. Bring tears if needed.'},
+    b:{ico:'📝',lbl:'Appeal to HOD',desc:'Attend remaining classes. Submit a formal appeal to the department head.'},
+    aEff:{cgpa:-0.15,sleep:0,mental:-20,social:-5},
+    aOut:{msg:'স্যার বললেন "নিয়মই নিয়ম।" পরীক্ষায় বসতে পারলে না। 💀',type:'bad'},
+    bEff:{cgpa:-0.1,sleep:-5,mental:-15,social:5},
+    bOut:{msg:'HOD শর্তসাপেক্ষে অনুমতি দিলেন। এই ঋণ আজীবন থাকবে। 😮‍💨',type:'good'},
+    aArc:{emoji:'📋',badge:'RULES ARC',title:'The rule only applies to students.',desc:'The professor\'s own missed classes weren\'t counted. The system never works equally.',col:'#f87171',bg:'rgba(239,68,68,0.08)'},
+    bArc:null,
+    aTwist:null,
+    bTwist:{chance:0.5,msg:'The HOD said: condition is you become Class Representative. Now every problem in class is yours to handle. 💀',type:'doom'},
+    blame:'player'
+  },
+  // ── RARE HELPER ──
+  {
+    id:'rare_hero',
+    cat:'RARE EVENT ✨', col:'#4ade80', dot:'#16a34a',
+    chars:'center+student',
+    ctr:{face:'🧠',torso:'#0e2a18',legs:'#0a2014',armCol:'#0e2a18',tag:'Tanvir 🧠',tagBg:'rgba(16,185,129,0.1)',tagCol:'#4ade80',anim:'bounce',say:'"নোটস রেডি। তোমার জন্যও আছে 📚"'},
+    stu:{face:'😲',say:'তুমি কি রিয়েল??'},
+    text:'বিরল ঘটনা: গ্রুপ মেম্বার তানভীর কালার-কোডেড নোটস বানিয়েছে এবং শেয়ার করেছে। ডেডলাইনও মনে করিয়ে দিয়েছে।',
+    hook:'এমন ঘটনা বিশ্ববিদ্যালয়জীবনে একবারই আসে।',
+    a:{ico:'🤷',lbl:'Ignore, Study Solo',desc:'You trust your own method. Don\'t break the pattern.'},
+    b:{ico:'🤝',lbl:'Use It, Say Thanks',desc:'Accept this rare help. Be grateful. You don\'t deserve this luck.'},
+    aEff:{cgpa:-0.1,sleep:0,mental:-5,social:-10},
+    aOut:{msg:'তানভীরের নোটস পারফেক্ট ছিল। পরীক্ষায় সব বেরিয়েছে। তুমি ব্যবহার করোনি। 😭',type:'bad'},
+    bEff:{cgpa:0.45,sleep:8,mental:22,social:20},
+    bOut:{msg:'সেমিস্টারের সেরা সিদ্ধান্ত। তানভীরকে ভালোবাসো। 🌟',type:'good'},
+    aArc:null,
+    bArc:null,
+    aTwist:null,
+    bTwist:{chance:0.5,msg:'One page of Tanvir\'s notes had an error. Exactly that topic came in the exam. Good intentions, bad outcome. 😮‍💨',type:'doom'},
+    blame:'luck'
+  },
+  // ── NIGHT BEFORE EXAM ──
+  {
+    id:'exam_eve_choice',
+    cat:'PRE-EXAM NIGHT', col:'#e879f9', dot:'#9333ea',
+    chars:'student',
+    stu:{face:'😨',say:'কাল পরীক্ষা। ঘুমাবো না পড়বো?'},
+    text:'রাত ১২টা। পরীক্ষা কাল ৯টায়। তুমি ৬০% পড়েছ। ৪০% বাকি। শরীর ক্লান্ত।',
+    hook:'কাল যদি ঘুম না হয় তাহলে পরীক্ষা হবে ঘুম-ঘুম চোখে।',
+    a:{ico:'📚',lbl:'Study All Night',desc:'Finish the remaining 40%. Sleep can wait for the afterlife.'},
+    b:{ico:'😴',lbl:'Sleep Now',desc:'Take the exam on 60% but with a fresh, functioning brain.'},
+    aEff:{cgpa:0.05,sleep:-30,mental:-18,social:0},
+    aOut:{msg:'বাকিটা পড়লে। কিন্তু হলে ঘুমিয়ে পড়ার অবস্থা। লেখতে হাত কাঁপছে। 😮‍💨',type:'bad'},
+    bEff:{cgpa:-0.1,sleep:8,mental:5,social:0},
+    bOut:{msg:'সতেজ মাথায় পরীক্ষা দিলে। পড়া ৬০% দিয়ে পার পেলে। মাঝারি ফলাফল। 😌',type:'good'},
+    aArc:null,
+    bArc:null,
+    aTwist:{chance:0.4,msg:'The last chapters you read showed up as the entire exam. Staying up was worth it. Barely. 🌟',type:'twist'},
+    bTwist:{chance:0.5,msg:'40% of questions were from chapters you skipped. The sleep betrayed you. 💀',type:'doom'},
+    blame:'player'
+  },
+  // ── QUIZ AMBUSH ──
+  {
+    id:'surprise_quiz',
+    cat:'SURPRISE QUIZ ATTACK', col:'#a78bfa', dot:'#7c3aed',
+    chars:'teacher+student',
+    npc:{face:'😐',torso:'#14141e',legs:'#0e0e16',armCol:'#14141e',tag:'Kabir Sir 😐',tagBg:'rgba(109,40,217,0.12)',tagCol:'#a78bfa',anim:'bounce',say:'"সারপ্রাইজ কুইজ। এখনই। শুরু করো।"'},
+    stu:{face:'😰',say:'কোন চ্যাপ্টার?!'},
+    text:'কবির স্যার ক্লাসে ঢুকলেন। কথা নেই। কুইজের কাগজ দিলেন। কোনো নোটিশ নেই। চ্যাপ্টার ৮। তুমি পড়েছ ১-৩।',
+    hook:'পাশের জনও কিছু জানে না।',
+    a:{ico:'👀',lbl:'Peek at Neighbor',desc:'He doesn\'t know either, but it\'s worth trying.'},
+    b:{ico:'✏️',lbl:'Write What You Know',desc:'Chapter 1-3 knowledge only. Write whatever connects.'},
+    aEff:{cgpa:-0.3,sleep:0,mental:-16,social:-5},
+    aOut:{msg:'স্যার পেছন থেকে দেখছিলেন। তোমাদের দুজনের পেপার নিয়ে গেলেন। 💀',type:'bad'},
+    bEff:{cgpa:-0.1,sleep:0,mental:-5,social:0},
+    bOut:{msg:'৩/১০ পেলে। খালি থেকে ভালো। স্যার চেষ্টার কথা লিখে দিলেন। 😮‍💨',type:'good'},
+    aArc:{emoji:'👁️',badge:'OBSERVATION ARC',title:'The professor always sees.',desc:'"Looking at the front" actually means watching the back. This trick has caught hundreds before you.',col:'#f472b6',bg:'rgba(236,72,153,0.08)'},
+    bArc:null,
+    aTwist:null,
+    bTwist:{chance:0.5,msg:'Sir said the questions were from Chapter 1-3 all along. You were looking at the wrong page. Full marks was possible. 😭',type:'doom'},
+    blame:'teacher'
+  },
+  // ── PRESENTATION SOLO ──
+  {
+    id:'presentation_solo',
+    cat:'PRESENTATION DAY', col:'#22d3ee', dot:'#0e7490',
+    chars:'center+student',
+    ctr:{face:'😎',torso:'#0e1e1a',legs:'#0a1614',armCol:'#0e1e1a',tag:'Rahat 😎',tagBg:'rgba(6,182,212,0.1)',tagCol:'#22d3ee',anim:'bounce',say:'"আমি সব করব বাই!"'},
+    stu:{face:'😤',say:'রাহাত... কই তুমি?!'},
+    text:'প্রেজেন্টেশন ৩০ মিনিটে। রাহাত অনলাইনে আছে কিন্তু রিড করছে না। তুমি হলের বাইরে দাঁড়িয়ে।',
+    hook:'ফোন তুলছে না। মেসেজ সিন করছে।',
+    a:{ico:'⏳',lbl:'Wait for Rahat',desc:'He said he\'s coming. There\'s still a few minutes. Trust him.'},
+    b:{ico:'💪',lbl:'Present Alone',desc:'Walk in. Own it. Forget Rahat exists.'},
+    aEff:{cgpa:-0.3,sleep:0,mental:-22,social:-10},
+    aOut:{msg:'রাহাত আসেনি। তুমি দেরি করে ঢুকলে। স্যার বললেন "আনপ্রিপেয়ার্ড।" 💀',type:'bad'},
+    bEff:{cgpa:0.2,sleep:0,mental:-12,social:-5},
+    bOut:{msg:'একাই দিলে। ভালো হলো। রাহাত পরে বললো "বাই ট্র্যাফিক ছিল।" প্রেজেন্টেশনের ৩ ঘণ্টা পরে। 😤',type:'good'},
+    aArc:{emoji:'⏰',badge:'TRUST ARC',title:'Rahat was home the entire time.',desc:'"Coming" means "not coming." Prepare alone from now. Always.',col:'#22d3ee',bg:'rgba(6,182,212,0.08)'},
+    bArc:null,
+    aTwist:null,
+    bTwist:{chance:0.5,msg:'While presenting alone you realize Rahat\'s slides section was never added. Half the deck is blank. 💀',type:'doom'},
+    blame:'group'
+  },
+  // ── RESULTS MISTAKE ──
+  {
+    id:'result_error',
+    cat:'RESULT ANOMALY', col:'#f59e0b', dot:'#d97706',
+    chars:'teacher+student',
+    npc:{face:'🤨',torso:'#1a1500',legs:'#120f00',armCol:'#1a1500',tag:'Exam Committee 🤨',tagBg:'rgba(245,158,11,0.1)',tagCol:'#fbbf24',anim:'float',say:'"তোমার পেপার হারিয়ে গেছে।"'},
+    stu:{face:'😱',say:'কী বললেন স্যার?!'},
+    text:'ফলাফল বেরিয়েছে। তোমার একটা সাবজেক্টের নম্বর শূন্য দেখাচ্ছে। তুমি পরীক্ষা দিয়েছিলে তোমার কাছে প্রমাণ আছে।',
+    hook:'আবেদনের শেষ দিন আগামীকাল।',
+    a:{ico:'🔥',lbl:'Fight Officially',desc:'Submit a formal complaint. Show your admit card and evidence. Don\'t back down.'},
+    b:{ico:'😮‍💨',lbl:'Accept and Move On',desc:'The system is broken. Re-sit the exam next semester to recover.'},
+    aEff:{cgpa:0.2,sleep:-10,mental:-25,social:0},
+    aOut:{msg:'দুই সপ্তাহ পরে নম্বর ঠিক হলো। কেউ দুঃখিত বললো না। 😤',type:'good'},
+    bEff:{cgpa:-0.4,sleep:5,mental:-10,social:0},
+    bOut:{msg:'গ্রেডশিটে শূন্য রইল। পরের সেমিস্টারে আবার দিতে হবে। 💀',type:'bad'},
+    aArc:null,
+    bArc:{emoji:'📂',badge:'SYSTEM ARC',title:'They lost your answer sheet.',desc:'It happens more than you think. The paperwork machine fails. You pay the price.',col:'#f59e0b',bg:'rgba(245,158,11,0.08)'},
+    aTwist:{chance:0.5,msg:'While they were reviewing your case, they found two other errors in your result that HELPED you. Net positive. 🌟',type:'twist'},
+    bTwist:null,
+    blame:'system'
+  },
+  // ── CRUSH DISTRACTION ──
+  {
+    id:'crush_distraction',
+    cat:'EMOTIONAL CRISIS', col:'#ec4899', dot:'#be185d',
+    chars:'center+student',
+    ctr:{face:'😍',torso:'#1e0a18',legs:'#160812',armCol:'#1e0a18',tag:'Crush 😍',tagBg:'rgba(236,72,153,0.1)',tagCol:'#ec4899',anim:'float',say:'"আজকে আমার সাথে বসবে?"'},
+    stu:{face:'🥴',say:'আমি... আমি... হ্যাঁ!'},
+    text:'ফাইনালের ৩ দিন আগে। ক্রাশ বললো আজকে ক্যান্টিনে বসতে। তুমি ৩ মাস ধরে এই মুহূর্তের জন্য অপেক্ষা করেছ।',
+    hook:'এই সুযোগ আর আসবে না। কিন্তু ফাইনালও না।',
+    a:{ico:'💕',lbl:'Go to the Canteen',desc:'YOLO. CGPA is temporary, memories are forever. Maybe.'},
+    b:{ico:'📚',lbl:'Study. Heartbreak Later.',desc:'Postpone. Explain. Hope they understand. Focus.'},
+    aEff:{cgpa:-0.25,sleep:0,mental:20,social:20},
+    aOut:{msg:'তিন ঘণ্টা গল্প করলে। ফাইনাল দিলে ঘুমের মধ্যে। কিন্তু মন ভালো ছিল। 😅',type:'bad'},
+    bEff:{cgpa:0.15,sleep:-8,mental:-15,social:-15},
+    bOut:{msg:'পড়া হলো। ফাইনাল ভালো হলো। ক্রাশ ততক্ষণে অন্য কারো সাথে বসছে। 😔',type:'good'},
+    aArc:null,
+    bArc:null,
+    aTwist:{chance:0.4,msg:'Turns out your crush was also panicking about the final. You studied together. Best of both worlds. 🌟',type:'twist'},
+    bTwist:{chance:0.5,msg:'Studying alone worked. But the mental damage of saying no haunted you during the exam. Focus: 0%. 💀',type:'doom'},
+    blame:'player'
+  },
+  // ── MEDICAL CRISIS ──
+  {
+    id:'medical_crisis',
+    cat:'HEALTH EMERGENCY', col:'#ef4444', dot:'#b91c1c',
+    chars:'student',
+    stu:{face:'🤒',say:'জ্বর আসলো কেন এখন?!'},
+    text:'মিডটার্মের আগের রাতে জ্বর উঠল। ১০২°। মাথা ঘুরছে। ওষুধ ঘরে নেই।',
+    hook:'হল থেকে বের হওয়া কঠিন। কাল সকাল ৮টায় পরীক্ষা।',
+    a:{ico:'🏥',lbl:'Go Get Medicine',desc:'Struggle out, find a pharmacy, come back and recover. Time cost: 2 hours.'},
+    b:{ico:'💊',lbl:'Rest and Push Through',desc:'No medicine. Sleep, sweat it out, show up tomorrow anyway.'},
+    aEff:{cgpa:0.1,sleep:-15,mental:-12,social:5},
+    aOut:{msg:'ওষুধ পেলে। রাত ২টায় ফিরলে। পরীক্ষা দিলে কোনোভাবে। মাথা ঘুরছিল পুরোটা। 😮‍💨',type:'good'},
+    bEff:{cgpa:-0.3,sleep:-5,mental:-20,social:-5},
+    bOut:{msg:'সকালে জ্বর ছিল। পরীক্ষায় অর্ধেক প্রশ্ন ঝাপসা দেখাচ্ছিল। 💀',type:'bad'},
+    aArc:null,
+    bArc:null,
+    aTwist:{chance:0.4,msg:'The pharmacist saw your admit card in your pocket and wished you luck. You passed. Barely. 🌟',type:'twist'},
+    bTwist:{chance:0.5,msg:'You fell asleep and missed the alarm. Reached the exam hall 20 minutes late. Professor didn\'t allow entry. 💀',type:'doom'},
+    blame:'luck'
+  },
+  // ── INTERNET TROLL RUMOR ──
+  {
+    id:'rumor_spread',
+    cat:'SOCIAL CRISIS', col:'#f97316', dot:'#ea580c',
+    chars:'center+student',
+    ctr:{face:'😏',torso:'#1e120a',legs:'#160e08',armCol:'#1e120a',tag:'সবাই 😏',tagBg:'rgba(249,115,22,0.1)',tagCol:'#fb923c',anim:'bounce',say:'"শুনলাম তুমি নাকি..."'},
+    stu:{face:'😤',say:'এটা মিথ্যা!'},
+    text:'ক্লাসে গুজব ছড়িয়েছে তুমি নাকি শেষ পরীক্ষায় নকল করেছ। করোনি। কিন্তু সবাই বিশ্বাস করছে।',
+    hook:'স্যারের কানেও পৌঁছেছে।',
+    a:{ico:'🗣️',lbl:'Publicly Deny Everything',desc:'Confront it head on. Call it out in class. Clear your name.'},
+    b:{ico:'😶',lbl:'Stay Silent, Let It Pass',desc:'Don\'t give it oxygen. Rumors die on their own.'},
+    aEff:{cgpa:0,sleep:-8,mental:-20,social:5},
+    aOut:{msg:'কনফ্রন্ট করলে। কেউ বিশ্বাস করলো না কিন্তু স্যার নোট করলেন "সৎ"। 😮‍💨',type:'good'},
+    bEff:{cgpa:-0.1,sleep:0,mental:-15,social:-15},
+    bOut:{msg:'গুজব ২ সপ্তাহ ছিল। ততক্ষণে আরেকজনের গুজব এসে তোমারটা ভুলিয়ে দিল। 😌',type:'bad'},
+    aArc:null,
+    bArc:{emoji:'🌀',badge:'RUMOR ARC',title:'Rumors in university travel at the speed of WiFi.',desc:'The best strategy depends on who\'s spreading it. Sometimes silence wins. Sometimes it confirms guilt.',col:'#f97316',bg:'rgba(249,115,22,0.08)'},
+    aTwist:{chance:0.5,msg:'Your public denial made more people curious. Now everyone thinks you\'re hiding something worse. 💀',type:'doom'},
+    bTwist:{chance:0.35,msg:'The rumor died AND the person who started it confessed. Your silence was dignity. 🌟',type:'twist'},
+    blame:'group'
+  },
+  // ── ASSIGNMENT PLAGIARISM ──
+  {
+    id:'plagiarism_tempt',
+    cat:'INTEGRITY TEST', col:'#a78bfa', dot:'#7c3aed',
+    chars:'student',
+    stu:{face:'😩',say:'রাত ৩টা। ডেডলাইন ৮টায়।'},
+    text:'অ্যাসাইনমেন্ট ডেডলাইন সকাল ৮টা। রাত ৩টায় তুমি ১০% করেছ। অনলাইনে এই বিষয়ের পুরো অ্যাসাইনমেন্ট পাওয়া যাচ্ছে।',
+    hook:'স্যারের Turnitin আছে কি না জানো না।',
+    a:{ico:'📋',lbl:'Copy Online Assignment',desc:'Paraphrase it a bit. Hope for the best. What\'s the worst that can happen?'},
+    b:{ico:'⚡',lbl:'Write Whatever You Can',desc:'Incomplete is better than plagiarised. Turn in what you have.'},
+    aEff:{cgpa:0.15,sleep:10,mental:-10,social:0},
+    aOut:{msg:'স্যারের Turnitin ছিল না। পার পেলে। কিন্তু কিছু একটা ভেতরে মরে গেল। 😅',type:'good'},
+    bEff:{cgpa:-0.2,sleep:-8,mental:-12,social:0},
+    bOut:{msg:'৪০% অ্যাসাইনমেন্ট জমা দিলে। স্যার মার্কস কাটলেন কিন্তু মন্তব্য লিখলেন "সৎ প্রচেষ্টা।" 😮‍💨',type:'bad'},
+    aArc:null,
+    bArc:{emoji:'✍️',badge:'INTEGRITY ARC',title:'40% honest beats 100% stolen.',desc:'The system sometimes catches you. But the real damage is internal. You know what you did.',col:'#a78bfa',bg:'rgba(109,40,217,0.1)'},
+    aTwist:{chance:0.5,msg:'The professor announced in the next class that someone plagiarised. He didn\'t name you. Yet. 💀',type:'doom'},
+    bTwist:{chance:0.4,msg:'Sir was so impressed by the honest incomplete attempt he gave bonus marks for "showing process." 🌟',type:'twist'},
+    blame:'player'
+  },
+  // ── RETAKE FAILURE ──
+  {
+    id:'retake_pressure',
+    cat:'RETAKE ROULETTE', col:'#ef4444', dot:'#dc2626',
+    chars:'teacher+student',
+    npc:{face:'😬',torso:'#1a1010',legs:'#120808',armCol:'#1a1010',tag:'Rahman Sir 😬',tagBg:'rgba(239,68,68,0.12)',tagCol:'#f87171',anim:'shake',say:'"তুমি আবার ফেল করলে?"'},
+    stu:{face:'💀',say:'স্যার... আবার...'},
+    text:'রিটেক পরীক্ষা। তুমি এবার ভালো প্রস্তুতি নিয়েছিলে। প্রশ্নপত্র হাতে পেলে সব পিছনের সিলেবাস থেকে।',
+    hook:'এটা তৃতীয়বার।',
+    a:{ico:'😤',lbl:'Power Through, Write Anything',desc:'This cannot be the end. Write whatever comes to mind. Fill every line.'},
+    b:{ico:'🤲',lbl:'Request Emergency Meeting',desc:'Stop mid-exam. Ask for the department advisor immediately.'},
+    aEff:{cgpa:-0.3,sleep:0,mental:-30,social:-5},
+    aOut:{msg:'যা পারলে লিখলে। ৩৮ পেলে। পাসের জন্য ৪০ লাগত। 💀',type:'bad'},
+    bEff:{cgpa:-0.1,sleep:0,mental:-20,social:0},
+    bOut:{msg:'অ্যাডভাইজার বললেন পরের সেমিস্টারে ক্লিয়ার করা যাবে। সম্মানজনক পরাজয়। 😔',type:'bad'},
+    aArc:null,
+    bArc:{emoji:'🔄',badge:'PERSISTENCE ARC',title:'The retake system is designed to break you.',desc:'Three attempts. Each with a different syllabus. This isn\'t education. This is endurance testing.',col:'#ef4444',bg:'rgba(239,68,68,0.08)'},
+    aTwist:{chance:0.35,msg:'The examiner made a marking error in your favor. You passed by 1 mark. The system accidentally helped you. 🌟',type:'twist'},
+    bTwist:{chance:0.5,msg:'The advisor told you you\'ll need to retake again — and it\'ll cost extra fees. Fourth time. 💀',type:'doom'},
+    blame:'system'
+  },
+  // ── LIBRARY CRUNCH ──
+  {
+    id:'library_war',
+    cat:'RESOURCE WAR', col:'#38bdf8', dot:'#0ea5e9',
+    chars:'center+student',
+    ctr:{face:'😤',torso:'#0a1520',legs:'#07101a',armCol:'#0a1520',tag:'সেই মানুষটা 😤',tagBg:'rgba(56,189,248,0.1)',tagCol:'#38bdf8',anim:'bounce',say:'এটা আমার বই।'},
+    stu:{face:'😤',say:'আমি আগে নিয়েছিলাম!'},
+    text:'লাইব্রেরিতে শেষ কপি রেফারেন্স বই। তুমি আর আরেকজন দুইজনেই হাত বাড়িয়েছ।',
+    hook:'এই বইটা না হলে অ্যাসাইনমেন্ট অসম্পূর্ণ থাকবে।',
+    a:{ico:'🤝',lbl:'Offer to Share',desc:'Propose splitting the time. Two hours each. Negotiate.'},
+    b:{ico:'💪',lbl:'Hold Your Ground',desc:'You were here first. Your need is greater. Don\'t let go.'},
+    aEff:{cgpa:0.05,sleep:0,mental:-8,social:10},
+    aOut:{msg:'শেয়ার করলে। তোমার দুই ঘণ্টায় ৬০% নোট করলে। অ্যাসাইনমেন্ট হলো কোনোভাবে। 😮‍💨',type:'good'},
+    bEff:{cgpa:-0.05,sleep:0,mental:-15,social:-15},
+    bOut:{msg:'তুমি বইটা পেলে। সেই মানুষটা লাইব্রেরিয়ানকে বললো। তুমি সেদিনের জন্য ব্যান। 💀',type:'bad'},
+    aArc:null,
+    bArc:{emoji:'📚',badge:'RESOURCE ARC',title:'There\'s never enough for everyone.',desc:'Private university. One copy of every useful book. Designed to create conflict. Classic.',col:'#38bdf8',bg:'rgba(56,189,248,0.08)'},
+    aTwist:{chance:0.4,msg:'The other person turned out to have the digital PDF and shared it with you. Sharing wins again. 🌟',type:'twist'},
+    bTwist:{chance:0.5,msg:'You got the book but the chapter you needed most was torn out by a previous student. 💀',type:'doom'},
+    blame:'system'
+  },
+  // ── FAMILY PRESSURE ──
+  {
+    id:'family_pressure',
+    cat:'FAMILY BOMB', col:'#f472b6', dot:'#db2777',
+    chars:'student',
+    stu:{face:'😓',say:'বাসা থেকে ফোন এলো...'},
+    text:'বাবা ফোন করলেন। বললেন এই সেমিস্টারে CGPA না বাড়লে পরের সেমিস্টারের টাকা দেবেন না। মিডটার্মের কেবল ৩ দিন বাকি।',
+    hook:'বাসার অবস্থাও ভালো না।',
+    a:{ico:'🔥',lbl:'Promise and Over-Commit',desc:'Tell him you\'ll get 4.0. Motivation through pressure. It might just work.'},
+    b:{ico:'💬',lbl:'Be Honest About Reality',desc:'Tell him your real standing. Ask for understanding. Risky, but honest.'},
+    aEff:{cgpa:0.1,sleep:-10,mental:-25,social:0},
+    aOut:{msg:'চাপে পড়ে পড়লে। কিছুটা উন্নতি হলো। কিন্তু মানসিক চাপ দ্বিগুণ হলো। 😮‍💨',type:'good'},
+    bEff:{cgpa:0,sleep:5,mental:-10,social:0},
+    bOut:{msg:'বাবা রাগ করলেন। কিন্তু শেষে বললেন "চেষ্টা করো।" মানসিক চাপ কমলো। 😌',type:'bad'},
+    aArc:null,
+    bArc:null,
+    aTwist:{chance:0.5,msg:'Your overconfident promise got back to your professor through your parent\'s social media post. Now expectations are set. 💀',type:'doom'},
+    bTwist:{chance:0.4,msg:'Your father called your advisor. The advisor put you on a support plan. Unexpected help. 🌟',type:'twist'},
+    blame:'player'
+  },
+  // ── PORTAL CRASH ──
+  {
+    id:'portal_crash',
+    cat:'DIGITAL CHAOS', col:'#38bdf8', dot:'#0ea5e9',
+    chars:'teacher+student',
+    npc:{face:'🖥️',torso:'#0a1020',legs:'#080c18',armCol:'#0a1020',tag:'Student Portal 🖥️',tagBg:'rgba(56,189,248,0.1)',tagCol:'#38bdf8',anim:'shake',say:'"Error 503. Try again."'},
+    stu:{face:'😡',say:'ডেডলাইন ৩০ মিনিটে!!'},
+    text:'অ্যাসাইনমেন্ট সাবমিশন পোর্টাল বন্ধ। "Server under maintenance." ডেডলাইন ৩০ মিনিটে।',
+    hook:'স্যারের ইমেইল আছে তোমার কাছে।',
+    a:{ico:'📧',lbl:'Email it Directly',desc:'Email the professor directly with the file. Explain the situation.'},
+    b:{ico:'⏳',lbl:'Wait for Portal to Come Back',desc:'It might open in time. Refresh every 30 seconds.'},
+    aEff:{cgpa:0.2,sleep:0,mental:-12,social:0},
+    aOut:{msg:'স্যার ইমেইল পেলেন। গ্রহণ করলেন। পোর্টাল ১০ মিনিট পরে ঠিক হলো। ভাগ্য তোমার পক্ষে। 😮‍💨',type:'good'},
+    bEff:{cgpa:-0.35,sleep:0,mental:-22,social:0},
+    bOut:{msg:'পোর্টাল আর খুললো না। ডেডলাইন পেরিয়ে গেল। স্যার শোনেননি। 💀',type:'bad'},
+    aArc:null,
+    bArc:{emoji:'🌐',badge:'SYSTEM ARC',title:'The portal crashes every semester.',desc:'They know. They don\'t care. Budget went to the new cafeteria renovation.',col:'#38bdf8',bg:'rgba(56,189,248,0.08)'},
+    aTwist:{chance:0.4,msg:'The professor replied: "I don\'t accept email submissions per policy." Then ignored the portal crash excuse. 💀',type:'doom'},
+    bTwist:{chance:0.35,msg:'Portal came back with 5 minutes to spare. Everything uploaded fine. You survived. 🌟',type:'twist'},
+    blame:'system'
+  },
+  // ── SENIOR MENTOR ──
+  {
+    id:'senior_mentor',
+    cat:'MENTOR MOMENT', col:'#4ade80', dot:'#16a34a',
+    chars:'center+student',
+    ctr:{face:'😎',torso:'#0e2a18',legs:'#0a2014',armCol:'#0e2a18',tag:'Faisa Vai 😎',tagBg:'rgba(16,185,129,0.1)',tagCol:'#4ade80',anim:'float',say:'"ভাই, পুরানো প্রশ্ন দিবো?"'},
+    stu:{face:'🤔',say:'সত্যিই?!'},
+    text:'৩য় বর্ষের সিনিয়র ফয়সাল পুরানো পরীক্ষার প্রশ্ন অফার করলো। "৭০% সবসময় রিপিট হয়।" বললো।',
+    hook:'এই প্রশ্ন পাওয়া technically নিষিদ্ধ।',
+    a:{ico:'📄',lbl:'Take the Questions',desc:'Use every resource available. It\'s survival, not cheating.'},
+    b:{ico:'🙅',lbl:'Decline Politely',desc:'Keep it clean. Study from the syllabus only.'},
+    aEff:{cgpa:0.3,sleep:5,mental:5,social:10},
+    aOut:{msg:'৭০% সত্যিই রিপিট হলো। ভালো করলে। এটা কি নৈতিক? এখন ভাবার সময় নেই। 😏',type:'good'},
+    bEff:{cgpa:-0.05,sleep:-5,mental:-8,social:-5},
+    bOut:{msg:'সিলেবাস থেকে পড়লে। ৬৫% প্রশ্ন সেখান থেকে আসেনি। পড়ার মতো ফল হলো। 😔',type:'bad'},
+    aArc:null,
+    bArc:null,
+    aTwist:{chance:0.5,msg:'The other 30% questions were all from areas you completely skipped. One paper ruined by old questions. 💀',type:'doom'},
+    bTwist:{chance:0.35,msg:'Your clean preparation paid off. You scored on questions others who used old papers skipped entirely. 🌟',type:'twist'},
+    blame:'luck'
+  },
+  // ── PART-TIME JOB ──
+  {
+    id:'part_time_job',
+    cat:'HUSTLE OR STUDY', col:'#f97316', dot:'#ea580c',
+    chars:'student',
+    stu:{face:'🤔',say:'পার্টটাইম জব নেবো?'},
+    text:'একটা টিউশনির অফার এসেছে। সপ্তাহে ৩ দিন, ৩ ঘণ্টা করে। ভালো টাকা। কিন্তু মিডটার্ম আগামী ৩ সপ্তাহ।',
+    hook:'টাকার দরকার আছে কিন্তু সময়ও লাগবে।',
+    a:{ico:'💼',lbl:'Take the Job',desc:'Financial stability matters. You can manage both. Probably.'},
+    b:{ico:'📚',lbl:'Focus on Studies First',desc:'Midterms first. Jobs after. Discipline over income.'},
+    aEff:{cgpa:-0.2,sleep:-12,mental:-15,social:15},
+    aOut:{msg:'টাকা পেলে। কিন্তু মিডটার্মের রাতেও টিউশন করতে হলো। পরীক্ষা হালকা খারাপ হলো। 😅',type:'bad'},
+    bEff:{cgpa:0.1,sleep:5,mental:-5,social:-10},
+    bOut:{msg:'পড়া ভালো হলো। মিডটার্ম গেলো। কিন্তু টাকার সমস্যা রয়েই গেল। 😔',type:'good'},
+    aArc:null,
+    bArc:null,
+    aTwist:{chance:0.5,msg:'The student you\'re tutoring has an exam the same day as yours. He cancelled. You scrambled. 💀',type:'doom'},
+    bTwist:{chance:0.35,msg:'A classmate connected you to a remote job that needs 2 hours a week with good pay. Best of both. 🌟',type:'twist'},
+    blame:'player'
+  },
+  // ── STUDY GROUP BETRAYAL ──
+  {
+    id:'study_group_chaos',
+    cat:'STUDY GROUP TRAP', col:'#ec4899', dot:'#be185d',
+    chars:'center+student',
+    ctr:{face:'😅',torso:'#1e0a18',legs:'#160812',armCol:'#1e0a18',tag:'Study Group 😅',tagBg:'rgba(236,72,153,0.1)',tagCol:'#ec4899',anim:'bounce',say:'"আমরা সবাই পড়বো আজকে!"'},
+    stu:{face:'🥱',say:'ঠিক আছে...'},
+    text:'স্টাডি গ্রুপ ডাকা হয়েছে। পরীক্ষার ২ দিন আগে। তুমি গেলে। গ্রুপের ৬ জনের মধ্যে ৪ জন মোবাইল চালাচ্ছে।',
+    hook:'এই গ্রুপে সত্যিকারের পড়া হয় না।',
+    a:{ico:'🏠',lbl:'Leave, Study Alone',desc:'Admit this is a waste of time. Go home. Study solo.'},
+    b:{ico:'😤',lbl:'Stay, Try to Focus',desc:'Maybe others will get serious. Model the behavior you want to see.'},
+    aEff:{cgpa:0.2,sleep:-5,mental:-8,social:-10},
+    aOut:{msg:'বাসায় গেলে। একা ৪ ঘণ্টা পড়লে। পরীক্ষা ভালো হলো। গ্রুপ অভিমান করলো। 😤',type:'good'},
+    bEff:{cgpa:-0.2,sleep:0,mental:-18,social:5},
+    bOut:{msg:'৩ ঘণ্টা কাটলো। পড়া: শূন্য। আড্ডা: পর্যাপ্ত। পরীক্ষা: বিপর্যয়। 💀',type:'bad'},
+    aArc:null,
+    bArc:{emoji:'📱',badge:'GROUP DYNAMIC ARC',title:'Study groups are often social events with textbooks.',desc:'The format matters less than the people. 4 out of 6 on phones means 0% productivity. Know when to leave.',col:'#ec4899',bg:'rgba(236,72,153,0.08)'},
+    aTwist:{chance:0.4,msg:'The one person who stayed serious in the group shared notes later. Solo + their notes = maximum efficiency. 🌟',type:'twist'},
+    bTwist:{chance:0.5,msg:'You stayed trying to model focus. Instead, you got sucked in. YouTube until 2am. 💀',type:'doom'},
+    blame:'group'
+  }
+];
+
+// ═══════════════════════════════════════════════════
+// TITLES — in English
+// ═══════════════════════════════════════════════════
+const TITLES = [
+  {min:3.85,t:'CGPA God 👑',f:'"Either you\'re a robot, or you have no friends. Both are equally likely."',c:'#fbbf24',bg:'rgba(251,191,36,0.12)'},
+  {min:3.5, t:'Secret Genius 🧠',f:'"You surprised everyone. Especially yourself. You still don\'t know how you did it."',c:'#4ade80',bg:'rgba(74,222,128,0.1)'},
+  {min:3.2, t:'Clutch Player 📚',f:'"Studying the night before an exam is not cramming — it\'s an art form. You\'re a master."',c:'#22d3ee',bg:'rgba(34,211,238,0.1)'},
+  {min:3.0, t:'Average Survivor ✅',f:'"Neither great nor terrible. You are safe. But painfully boring."',c:'#a78bfa',bg:'rgba(167,139,250,0.1)'},
+  {min:2.7, t:'3AM Warrior 🌙',f:'"You are most productive at 3AM. Is this pride or a warning sign?"',c:'#e879f9',bg:'rgba(232,121,249,0.1)'},
+  {min:2.5, t:'Group Project Sacrifice 💀',f:'"You did the work for the entire group alone. Everyone knows. Nobody admitted it."',c:'#f472b6',bg:'rgba(244,114,182,0.1)'},
+  {min:2.3, t:'Last-Minute Specialist ⏰',f:'"Your best work happens 15 minutes before the deadline. That\'s not a skill. Or is it?"',c:'#fb923c',bg:'rgba(251,146,60,0.1)'},
+  {min:2.0, t:'PDF Hoarder 📁',f:'"800 PDFs saved. Zero opened. A digital warehouse of good intentions."',c:'#f87171',bg:'rgba(248,113,113,0.1)'},
+  {min:1.5, t:'Attendance Ghost 👻',f:'"The university administration questions whether you actually exist."',c:'#ef4444',bg:'rgba(239,68,68,0.1)'},
+  {min:0,   t:'Legendary Disaster 🌋',f:'"Achieving this CGPA requires making every single decision incorrectly. That takes talent."',c:'#dc2626',bg:'rgba(220,38,38,0.1)'}
+];
+
+// ═══════════════════════════════════════════════════
+// VERDICTS — in English
+// ═══════════════════════════════════════════════════
+const VERDICTS = {
+  teacher:'The professors were your CGPA\'s primary enemy. Surprise quizzes, doubled syllabi, false promises — these weren\'t accidents. This was a system.',
+  group:'Your group members destroyed you. "I\'ll do it" always meant "you\'ll do it." You still can\'t accept this truth.',
+  system:'The system itself worked against you. Portal crashes, WiFi betrayals, sudden fees — private university\'s built-in traps.',
+  player:'Honestly? You did this to yourself. Netflix, comparisons, last-minute preparations — every one of these was your choice.',
+  financial:'Financial pressure stole your focus. When money is a problem, studying becomes a luxury.',
+  luck:'Luck just wasn\'t on your side. The alarm, the roommate, the network — everything turned against you at once. Minimal blame on you.'
+};
+
+// ═══════════════════════════════════════════════════
+// GAME ENGINE
+// ═══════════════════════════════════════════════════
+const GAME = {
+  s: null,
+  locked: false,
+  cur: null,
+  arcCb: null,
+  playerName: 'TauFique',
+
+  start() {
+    const inp = document.getElementById('name-input');
+    this.playerName = (inp && inp.value.trim()) ? inp.value.trim() : 'TauFique';
+
+    this.s = {
+      cgpa: 4.0, sleep: 100, mental: 100, social: 100,
+      turn: 0, max: 15,
+      blame: {group:0,teacher:0,system:0,player:0,financial:0,luck:0},
+      used: [], dead: false
+    };
+    this.locked = false;
+    this.cur = null;
+
+    ['scr-title','scr-result'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.classList.remove('on');
+    });
+    document.getElementById('scr-game').classList.add('on');
+    document.getElementById('death-wrap').style.display = 'none';
+    document.getElementById('choices').style.display = 'flex';
+    document.getElementById('outcome').style.display = 'none';
+    document.getElementById('outcome').textContent = '';
+
+    document.getElementById('h-player').textContent = this.playerName;
+    document.getElementById('s-tag').textContent = this.playerName;
+
+    this.buildPips();
+    this.spawnStars();
+    this.hideAllChars();
+    this.updateHUD();
+    setTimeout(() => this.nextTurn(), 300);
+  },
+
+  restart() {
+    document.getElementById('scr-result').classList.remove('on');
+    document.getElementById('scr-title').classList.add('on');
+    const inp = document.getElementById('name-input');
+    if(inp) inp.value = this.playerName !== 'TauFique' ? this.playerName : '';
+  },
+
+  buildPips() {
+    const row = document.getElementById('pip-row');
+    row.innerHTML = '';
+    for(let i = 0; i < 15; i++) {
+      const p = document.createElement('div');
+      p.className = 'pip';
+      p.id = 'pip' + i;
+      row.appendChild(p);
+    }
+  },
+
+  spawnStars() {
+    const sf = document.getElementById('starfield');
+    if(!sf) return;
+    sf.innerHTML = '';
+    for(let i = 0; i < 40; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      const sz = Math.random() * 2 + 0.8;
+      s.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*75}%;opacity:${Math.random()*0.5+0.08};animation-delay:${Math.random()*4}s;animation-duration:${2+Math.random()*3}s;`;
+      sf.appendChild(s);
+    }
+  },
+
+  updateHUD() {
+    const s = this.s;
+    const cg = document.getElementById('h-cgpa');
+    const v = Math.max(0, s.cgpa);
+    cg.textContent = v.toFixed(2);
+    const p = v / 4;
+    cg.style.color = p > 0.75 ? '#4ade80' : p > 0.5 ? '#a78bfa' : p > 0.25 ? '#f59e0b' : '#ef4444';
+    cg.style.animation = p <= 0.3 ? 'heartbeat 0.6s infinite' : 'none';
+
+    document.getElementById('h-turn').textContent = `Turn ${Math.min(s.turn+1, s.max)} / ${s.max}`;
+
+    const bars = [
+      ['s', s.sleep, '#06b6d4'],
+      ['m', s.mental, '#ec4899'],
+      ['c', s.social, '#f97316']
+    ];
+    bars.forEach(([k, val, col]) => {
+      const vv = Math.max(0, Math.round(val));
+      document.getElementById('hv-' + k).textContent = vv;
+      const fill = document.getElementById('hf-' + k);
+      fill.style.width = vv + '%';
+      fill.style.background = vv > 50 ? col : vv > 25 ? '#f59e0b' : '#ef4444';
+      fill.style.animation = vv < 20 ? 'statWarn 0.5s ease infinite' : 'none';
+    });
+
+    for(let i = 0; i < 15; i++) {
+      const pip = document.getElementById('pip' + i);
+      if(!pip) continue;
+      pip.className = 'pip' + (i < s.turn ? ' done' : i === s.turn ? ' now' : '');
+    }
+  },
+
+  hideAllChars() {
+    ['ch-s', 'ch-n', 'ch-c'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) { el.className = el.className.replace(/ *in/g,'').replace(/ *out/g,'') + ' out'; }
+    });
+    ['bub-s','bub-n','bub-c'].forEach(id => {
+      const b = document.getElementById(id);
+      if(b) { b.textContent = ''; b.className = 'ch-bub'; }
+    });
+  },
+
+  showChar(slot, cfg, isStu) {
+    const el = document.getElementById('ch-' + slot);
+    if(!el) return;
+    el.className = 'char out';
+
+    if(isStu) {
+      document.getElementById('s-face').textContent = cfg.face || '😭';
+      const bub = document.getElementById('bub-s');
+      if(cfg.say) { bub.textContent = cfg.say; }
+      setTimeout(() => {
+        el.className = 'char in';
+        if(cfg.say) setTimeout(() => bub.className = 'ch-bub show', 400);
+      }, isStu === 'delay' ? 250 : 80);
+    } else {
+      const bodyId = slot === 'n' ? 'n' : 'c';
+      document.getElementById(bodyId + '-face').textContent = cfg.face || '😐';
+      const torso = document.getElementById(bodyId + '-torso');
+      const armL = document.getElementById(bodyId + '-arm-l');
+      const armR = document.getElementById(bodyId + '-arm-r');
+      const legL = document.getElementById(bodyId + '-leg-l');
+      const legR = document.getElementById(bodyId + '-leg-r');
+      const tag = document.getElementById(bodyId + '-tag');
+      const body = document.getElementById(bodyId + '-body');
+
+      if(torso) torso.style.background = cfg.torso || '#181818';
+      if(armL) armL.style.background = cfg.armCol || cfg.torso || '#181818';
+      if(armR) armR.style.background = cfg.armCol || cfg.torso || '#181818';
+      if(legL) legL.style.background = cfg.legs || '#111';
+      if(legR) legR.style.background = cfg.legs || '#111';
+      if(tag) {
+        tag.textContent = cfg.tag;
+        tag.style.background = cfg.tagBg;
+        tag.style.color = cfg.tagCol;
+        tag.style.border = `1px solid ${cfg.tagCol}44`;
+      }
+      if(body) {
+        if(cfg.anim === 'shake') body.style.animation = 'shake 0.5s ease infinite';
+        else if(cfg.anim === 'bounce') body.style.animation = 'bounce 0.7s ease infinite';
+        else if(cfg.anim === 'float') body.style.animation = 'float 1.8s ease infinite';
+        else if(cfg.anim === 'scared') body.style.animation = 'scared 0.4s ease infinite';
+        else body.style.animation = '';
+      }
+
+      const bub = document.getElementById('bub-' + slot);
+      if(cfg.say && bub) bub.textContent = cfg.say;
+
+      setTimeout(() => {
+        el.className = 'char in';
+        if(cfg.say && bub) setTimeout(() => bub.className = 'ch-bub show', 450);
+      }, 280);
+    }
+  },
+
+  setupScene(ev) {
+    this.hideAllChars();
+    const scene = ev.chars || 'student';
+    this.showChar('s', ev.stu || {face:'😭',say:''}, true);
+    if(scene.includes('teacher')) {
+      this.showChar('n', ev.npc, false);
+    } else if(scene.includes('center')) {
+      this.showChar('c', ev.ctr, false);
+    }
+  },
+
+  getEvent() {
+    let pool = EVENTS.filter(e => !this.s.used.includes(e.id));
+    if(!pool.length) { this.s.used = []; pool = [...EVENTS]; }
+    const idx = Math.floor(Math.random() * pool.length);
+    const ev = pool[idx];
+    this.s.used.push(ev.id);
+    return ev;
+  },
+
+  nextTurn() {
+    if(this.s.turn >= this.s.max) { this.showResult(); return; }
+    this.locked = false;
+
+    const ev = this.getEvent();
+    this.cur = ev;
+
+    const card = document.getElementById('ev-card');
+    card.style.setProperty('--ev-col', ev.col);
+    document.getElementById('ev-dot').style.background = ev.dot;
+    const catEl = document.getElementById('ev-cat');
+    catEl.textContent = ev.cat;
+    catEl.style.color = ev.col;
+    document.getElementById('ev-turn-badge').textContent = `${this.s.turn+1}/15`;
+
+    const textEl = document.getElementById('ev-text');
+    textEl.style.animation = 'none';
+    textEl.textContent = ev.text;
+    textEl.offsetHeight;
+    textEl.style.animation = 'slideUp 0.4s ease';
+
+    document.getElementById('ev-hook').textContent = ev.hook || '';
+    document.getElementById('ev-hook').style.color = ev.col;
+
+    document.getElementById('ico-a').textContent = ev.a.ico;
+    document.getElementById('lbl-a').textContent = ev.a.lbl;
+    document.getElementById('desc-a').textContent = ev.a.desc;
+    document.getElementById('ico-b').textContent = ev.b.ico;
+    document.getElementById('lbl-b').textContent = ev.b.lbl;
+    document.getElementById('desc-b').textContent = ev.b.desc;
+
+    const out = document.getElementById('outcome');
+    out.style.display = 'none';
+    out.textContent = '';
+
+    document.getElementById('btn-a').disabled = false;
+    document.getElementById('btn-b').disabled = false;
+    document.getElementById('death-wrap').style.display = 'none';
+    document.getElementById('choices').style.display = 'flex';
+
+    this.setupScene(ev);
+    this.updateHUD();
+  },
+
+  pick(choice) {
+    if(this.locked) return;
+    this.locked = true;
+
+    const ev = this.cur;
+    const eff = choice === 0 ? ev.aEff : ev.bEff;
+    const outData = choice === 0 ? ev.aOut : ev.bOut;
+    const arc = choice === 0 ? ev.aArc : ev.bArc;
+    const twist = choice === 0 ? ev.aTwist : ev.bTwist;
+
+    document.getElementById('btn-a').disabled = true;
+    document.getElementById('btn-b').disabled = true;
+
+    if(outData.type === 'bad' || outData.type === 'doom') {
+      const G = document.getElementById('G');
+      G.style.animation = 'screenShake 0.35s ease';
+      setTimeout(() => G.style.animation = '', 380);
+    }
+
+    // Apply effects — social replaces cgpaH
+    this.s.cgpa = Math.max(0, Math.min(4, this.s.cgpa + (eff.cgpa || 0)));
+    this.s.sleep = Math.max(0, Math.min(100, this.s.sleep + (eff.sleep || 0)));
+    this.s.mental = Math.max(0, Math.min(100, this.s.mental + (eff.mental || 0)));
+    this.s.social = Math.max(0, Math.min(100, this.s.social + (eff.social || 0)));
+    this.s.turn++;
+
+    if(outData.type === 'bad' || outData.type === 'doom') {
+      this.s.blame[ev.blame] = (this.s.blame[ev.blame] || 0) + 1;
+    }
+
+    const sf = document.getElementById('s-face');
+    const sb = document.getElementById('bub-s');
+    if(sf) sf.textContent = (outData.type === 'good' || outData.type === 'twist') ? '😤' : '😭';
+    if(sb) {
+      sb.textContent = (outData.type === 'good') ? 'Somehow managed...' : (outData.type === 'twist') ? 'Wait, what?!' : 'Why is this my life...';
+      sb.className = 'ch-bub show';
+    }
+
+    setTimeout(() => this.showDamage(eff), 200);
+    this.updateHUD();
+
+    const dead = this.checkDeath();
+
+    setTimeout(() => {
+      const out = document.getElementById('outcome');
+      out.style.display = 'block';
+      out.className = outData.type;
+      out.textContent = outData.msg;
+
+      // Always check twist — even on "good" outcomes (50% chance of problems)
+      const hasTwist = twist && Math.random() < (twist.chance || 0);
+
+      if(dead) {
+        setTimeout(() => this.triggerDeath(dead), 2800);
+        return;
+      }
+
+      if(arc) {
+        setTimeout(() => {
+          this.showArc(arc, () => {
+            if(hasTwist) {
+              setTimeout(() => this.showTwist(twist, () => this.nextTurn()), 400);
+            } else {
+              this.nextTurn();
+            }
+          });
+        }, 2200);
+      } else if(hasTwist) {
+        setTimeout(() => this.showTwist(twist, () => this.nextTurn()), 2800);
+      } else {
+        setTimeout(() => this.nextTurn(), 3200);
+      }
+    }, 900);
+  },
+
+  showDamage(eff) {
+    const stage = document.getElementById('stage');
+    const stageRect = stage.getBoundingClientRect();
+    const GRect = document.getElementById('G').getBoundingClientRect();
+
+    const dmgItems = [
+      {key:'cgpa', val:eff.cgpa, label:'CGPA', col:'#a78bfa', x:25},
+      {key:'sleep', val:eff.sleep, label:'😴', col:'#06b6d4', x:50},
+      {key:'mental', val:eff.mental, label:'😰', col:'#ec4899', x:70},
+      {key:'social', val:eff.social, label:'🏃', col:'#f97316', x:88},
+    ];
+
+    let delay = 0;
+    dmgItems.forEach(item => {
+      if(!item.val || item.val === 0) return;
+      setTimeout(() => {
+        const dmg = document.createElement('div');
+        dmg.className = 'dmg';
+        const sign = item.val > 0 ? '+' : '';
+        const txt = item.key === 'cgpa'
+          ? `${sign}${item.val.toFixed(2)} GPA`
+          : `${item.label} ${sign}${Math.round(item.val)}`;
+        dmg.textContent = txt;
+        dmg.style.color = item.val > 0 ? item.col : '#ef4444';
+        const yPos = stageRect.top - GRect.top + 55 + Math.random() * 40;
+        const xPos = (item.x / 100) * stageRect.width;
+        dmg.style.left = xPos + 'px';
+        dmg.style.top = yPos + 'px';
+        document.getElementById('G').appendChild(dmg);
+        setTimeout(() => dmg.remove(), 1200);
+      }, delay);
+      delay += 180;
+    });
+  },
+
+  showArc(arc, cb) {
+    this.arcCb = cb;
+    const overlay = document.getElementById('arc-overlay');
+    const popup = document.getElementById('arc-popup');
+
+    const existingStyle = document.getElementById('arc-dynamic-style');
+    if(existingStyle) existingStyle.remove();
+    const s = document.createElement('style');
+    s.id = 'arc-dynamic-style';
+    s.textContent = `.arc-popup::before{background:${arc.col};}`;
+    document.head.appendChild(s);
+
+    popup.style.borderColor = arc.col + '40';
+    document.getElementById('arc-emoji').textContent = arc.emoji;
+    const badge = document.getElementById('arc-badge');
+    badge.textContent = arc.badge;
+    badge.style.background = arc.bg;
+    badge.style.color = arc.col;
+    badge.style.border = `1px solid ${arc.col}44`;
+    document.getElementById('arc-title').textContent = arc.title;
+    document.getElementById('arc-desc').textContent = arc.desc;
+
+    const btn = document.getElementById('arc-btn');
+    btn.style.background = arc.col;
+    btn.style.color = '#fff';
+
+    overlay.classList.add('show');
+  },
+
+  closeArc() {
+    document.getElementById('arc-overlay').classList.remove('show');
+    if(this.arcCb) { const cb = this.arcCb; this.arcCb = null; setTimeout(cb, 200); }
+  },
+
+  showTwist(twist, cb) {
+    const out = document.getElementById('outcome');
+    out.className = twist.type;
+    out.textContent = (twist.type === 'doom' ? '💀 ' : '⚡ ') + twist.msg;
+
+    if(twist.type === 'doom') {
+      this.s.cgpa = Math.max(0, this.s.cgpa - 0.12);
+      this.s.mental = Math.max(0, this.s.mental - 8);
+      this.s.social = Math.max(0, this.s.social - 8);
+      this.updateHUD();
+    } else if(twist.type === 'twist') {
+      this.s.cgpa = Math.min(4, this.s.cgpa + 0.08);
+      this.s.sleep = Math.min(100, this.s.sleep + 5);
+      this.updateHUD();
+    }
+
+    setTimeout(cb, 3000);
+  },
+
+  checkDeath() {
+    const s = this.s;
+    if(s.sleep <= 0) return {
+      title:'Semester Ended Mid-Sleep 😴',
+      reason:'Sleep hit zero. Your body gave up in class. One day you woke up and the semester was over.'
+    };
+    if(s.mental <= 0) return {
+      title:'Mental Breakdown 🧠',
+      reason:'Mental pressure crossed the limit. Group betrayals, professor pressure, family comparisons — everything hit at once.'
+    };
+    if(s.social <= 0) return {
+      title:'Complete Isolation 🏚️',
+      reason:'Social life reached zero. You cut off everyone trying to survive academically. In the end, you had neither grades nor people.'
+    };
+    if(s.cgpa <= 0.49) return {
+      title:'Academic Expulsion 💀',
+      reason:`CGPA dropped to ${s.cgpa.toFixed(2)}. University minimum is 2.0. Start preparing the paperwork.`
+    };
+    return null;
+  },
+
+  triggerDeath(d) {
+    document.getElementById('choices').style.display = 'none';
+    document.getElementById('outcome').style.display = 'none';
+
+    const sf = document.getElementById('s-face');
+    const sb = document.getElementById('bub-s');
+    if(sf) sf.textContent = '💀';
+    if(sb) { sb.textContent = 'It\'s over...'; sb.className = 'ch-bub show'; }
+
+    const dw = document.getElementById('death-wrap');
+    dw.style.display = 'block';
+    dw.innerHTML = `
+      <div class="death-card">
+        <span class="d-skull">💀</span>
+        <div class="d-title">${d.title}</div>
+        <div class="d-reason">${d.reason}</div>
+        <div class="d-stats">
+          <div class="d-stat">
+            <div class="d-sv">${Math.max(0,this.s.cgpa).toFixed(2)}</div>
+            <div class="d-sl">Final CGPA</div>
+          </div>
+          <div class="d-stat">
+            <div class="d-sv">${this.s.turn}</div>
+            <div class="d-sl">Turns Survived</div>
+          </div>
+        </div>
+        <button class="d-btn" onclick="GAME.showResult()">View Report Card →</button>
+      </div>`;
+  },
+
+  showResult() {
+    ['scr-game','scr-title'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.classList.remove('on');
+    });
+    const res = document.getElementById('scr-result');
+    res.classList.add('on');
+    res.scrollTop = 0;
+
+    const cg = Math.max(0, this.s.cgpa);
+    const cgStr = cg.toFixed(2);
+
+    // Player name — big and visible
+    document.getElementById('r-player-name').textContent = this.playerName.toUpperCase();
+
+    // CGPA
+    const rcg = document.getElementById('r-cgpa');
+    rcg.textContent = cgStr;
+    const p = cg / 4;
+    rcg.style.color = p > 0.75 ? '#4ade80' : p > 0.5 ? '#a78bfa' : p > 0.25 ? '#f59e0b' : '#ef4444';
+
+    // Title
+    const td = TITLES.find(t => cg >= t.min) || TITLES[TITLES.length - 1];
+    const rb = document.getElementById('r-badge');
+    rb.textContent = td.t;
+    rb.style.background = td.bg;
+    rb.style.color = td.c;
+    rb.style.border = `1px solid ${td.c}44`;
+    document.getElementById('r-flavor').textContent = td.f;
+
+    document.getElementById('rs-sleep').textContent = Math.max(0, Math.round(this.s.sleep));
+    document.getElementById('rs-mental').textContent = Math.max(0, Math.round(this.s.mental));
+    document.getElementById('rs-social').textContent = Math.max(0, Math.round(this.s.social));
+    document.getElementById('rs-turns').textContent = this.s.turn;
+
+    this.buildBlame();
+    this.buildVerdict();
+  },
+
+  buildBlame() {
+    const labels = {
+      group:'👥 Group Members',
+      teacher:'👨‍🏫 Professors',
+      system:'💻 The System',
+      player:'😴 Yourself',
+      financial:'💸 Money Issues',
+      luck:'🎲 Bad Luck'
+    };
+    const colors = {
+      group:'#22d3ee',teacher:'#f472b6',system:'#38bdf8',
+      player:'#a78bfa',financial:'#f59e0b',luck:'#4ade80'
+    };
+    const total = Math.max(1, Object.values(this.s.blame).reduce((a,b) => a+b, 0));
+    const sorted = Object.entries(this.s.blame).sort((a,b) => b[1]-a[1]);
+    const bb = document.getElementById('blame-bars');
+    bb.innerHTML = '';
+    sorted.forEach(([key, val]) => {
+      const pct = Math.round(val / total * 100);
+      const row = document.createElement('div');
+      row.className = 'b-row';
+      row.innerHTML = `<div class="b-lbl">${labels[key]}</div><div class="b-trk"><div class="b-fill" data-w="${pct}" style="background:${colors[key]};width:0%;border-radius:4px;"></div></div><div class="b-pct">${pct}%</div>`;
+      bb.appendChild(row);
+    });
+    setTimeout(() => {
+      document.querySelectorAll('.b-fill').forEach(el => { el.style.width = el.dataset.w + '%'; });
+    }, 400);
+  },
+
+  buildVerdict() {
+    const top = Object.entries(this.s.blame).sort((a,b) => b[1]-a[1])[0];
+    const key = (top && top[1] > 0) ? top[0] : 'luck';
+    const cg = Math.max(0, this.s.cgpa);
+    const td = TITLES.find(t => cg >= t.min) || TITLES[TITLES.length-1];
+    const vt = document.getElementById('v-text');
+    vt.innerHTML = VERDICTS[key] + `<span class="v-criminal">${td.t}</span>`;
+  },
+
+  share() {
+    const cg = Math.max(0, this.s.cgpa).toFixed(2);
+    const td = TITLES.find(t => parseFloat(cg) >= t.min) || TITLES[TITLES.length-1];
+    const top = Object.entries(this.s.blame).sort((a,b) => b[1]-a[1])[0];
+    const bn = {
+      group:'Group Members',teacher:'The Professors',system:'The System',
+      player:'Myself',financial:'Financial Stress',luck:'Bad Luck'
+    };
+    const blame = (top && top[1] > 0) ? bn[top[0]] : 'Unknown Forces';
+    const txt = `🎓 আমার CG খাইলো ক? | Who Stole My CGPA?\n\n👤 Player: ${this.playerName}\n📊 Final CGPA: ${cg}\n🏷️ Title: ${td.t}\n🔍 Blamed: ${blame}\n\n${td.f}\n\nOnly 5% survive! Can you?\n#WhoAteMyGPA #PrivateUniversity #TauFique`;
+    if(navigator.share) navigator.share({title:'Who Stole My CGPA?', text: txt});
+    else if(navigator.clipboard) { navigator.clipboard.writeText(txt); alert('Copied! Paste it on WhatsApp or Facebook 📤'); }
+    else alert(txt);
+  }
+};
+
+// Title screen stars
+window.addEventListener('DOMContentLoaded', () => {
+  const sf = document.getElementById('t-stars');
+  if(sf) {
+    for(let i = 0; i < 35; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      const sz = Math.random() * 2 + 0.7;
+      s.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*75}%;opacity:${Math.random()*0.45+0.06};animation-delay:${Math.random()*4}s;animation-duration:${2+Math.random()*3}s;`;
+      sf.appendChild(s);
+    }
+  }
+  const inp = document.getElementById('name-input');
+  if(inp) inp.addEventListener('keydown', e => { if(e.key === 'Enter') GAME.start(); });
+});
+</script>
+</body>
+</html>
