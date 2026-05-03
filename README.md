@@ -1,9 +1,5 @@
-This is the comprehensive, high-quality `README.md` file designed for your GitHub repository. It includes a cinematic introduction, technical deep-dives, and proper attribution to you as the author.
 
-***
-
-```markdown
-# 🎓 আমার CG খাইলো কে? (Who Stole My CGPA?) 💀
+## 🎓 আমার CG খাইলো কে? (Who Stole My CGPA?) 💀
 ### *The Ultimate Private University Survival Horror*
 
 **"আমার CG খাইলো কে?"** is not just a game; it is a brutal, satirical reflection of the university experience. In this world, your greatest enemy isn't a lack of knowledge—it’s a system designed to fail you. 
